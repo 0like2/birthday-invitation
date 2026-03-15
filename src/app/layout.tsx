@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Noto_Sans_KR, Noto_Serif_KR } from "next/font/google";
+import { getAbsoluteUrl, siteConfig } from "@/lib/site";
 import "./globals.css";
 
 const notoSansKr = Noto_Sans_KR({
@@ -15,9 +16,9 @@ const notoSerifKr = Noto_Serif_KR({
 });
 
 export const metadata: Metadata = {
-  title: "세 왕자님의 생일파티에 초대합니다",
-  description:
-    "이상욱, 고형빈, 이영락의 특별한 밤. 2026년 3월 20일 오후 8시, 을지로에서 만나요.",
+  metadataBase: new URL(siteConfig.url),
+  title: `${siteConfig.name}에 초대합니다`,
+  description: siteConfig.description,
   applicationName: "Three Princes Birthday Party",
   keywords: [
     "생일파티",
@@ -26,19 +27,33 @@ export const metadata: Metadata = {
     "을지로 파티",
     "카카오톡 초대장",
   ],
+  alternates: {
+    canonical: getAbsoluteUrl(),
+  },
   openGraph: {
-    title: "세 왕자님의 생일파티에 초대합니다",
-    description:
-      "이상욱, 고형빈, 이영락의 특별한 밤. 2026년 3월 20일 오후 8시, 을지로에서 만나요.",
+    title: `${siteConfig.name}에 초대합니다`,
+    description: siteConfig.description,
     type: "website",
     locale: "ko_KR",
     siteName: "Three Princes Birthday Party",
+    url: getAbsoluteUrl(),
+    images: [
+      {
+        url: getAbsoluteUrl("/opengraph-image"),
+        width: 1200,
+        height: 630,
+        alt: "세 왕자님의 생일파티 카카오 공유 이미지",
+      },
+    ],
   },
   twitter: {
     card: "summary_large_image",
-    title: "세 왕자님의 생일파티에 초대합니다",
-    description:
-      "이상욱, 고형빈, 이영락의 특별한 밤. 2026년 3월 20일 오후 8시, 을지로에서 만나요.",
+    title: `${siteConfig.name}에 초대합니다`,
+    description: siteConfig.description,
+    images: [getAbsoluteUrl("/opengraph-image")],
+  },
+  other: {
+    "theme-color": "#ffefe1",
   },
 };
 
