@@ -1,0 +1,56 @@
+@import "tailwindcss";
+
+:root {
+  --background: #f7f3ec;
+  --foreground: #111827;
+  --surface: #fffaf4;
+  --surface-strong: #efe8dd;
+  --accent: #d6b36a;
+  --accent-soft: #e6d2a4;
+  --accent-deep: #6e3b44;
+  --line-soft: rgba(17, 24, 39, 0.1);
+  --line-strong: rgba(255, 250, 244, 0.18);
+  --muted-foreground: rgba(17, 24, 39, 0.58);
+  --foreground-on-accent: #221912;
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-body);
+  --font-serif-display: var(--font-display);
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-body), sans-serif;
+  min-height: 100vh;
+  background-image:
+    radial-gradient(circle at top, rgba(214, 179, 106, 0.12), transparent 36%),
+    linear-gradient(180deg, #fcfaf6 0%, #f7f3ec 48%, #f1ebe1 100%);
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+main {
+  position: relative;
+}
+
+a,
+button {
+  cursor: pointer;
+}
+
+::selection {
+  background: rgba(214, 179, 106, 0.35);
+  color: var(--foreground);
+}
