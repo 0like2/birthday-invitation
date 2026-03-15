@@ -61,6 +61,8 @@ export function RsvpSection() {
           {invitationContent.rsvp.options.map((option, index) => (
             <button
               key={option}
+              onClick={() => setSelectedOption(option)}
+              type="button"
               className={
                 index === 0
                   ? "w-full rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-[color:var(--foreground-on-accent)] transition-transform duration-300 hover:-translate-y-0.5"

@@ -17,7 +17,9 @@ export default function Home() {
       <LocationSection />
       <TimetableSection />
       <ArchiveSection />
-      <RsvpSection />
+      <div id="rsvp">
+        <RsvpSection />
+      </div>
       <SectionPreview />
       <FooterSection />
     </main>

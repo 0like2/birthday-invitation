@@ -1,3 +1,5 @@
+"use client";
+
 import { invitationContent } from "@/content/invitation";
 import { ShareActions } from "@/components/invitation/share-actions";
 
@@ -28,7 +30,11 @@ export function FooterSection() {
             <p className="mt-3 text-sm leading-6 text-[color:var(--surface)]/78">
               {invitationContent.footer.contactValue}
             </p>
-            <button className="mt-5 w-full rounded-full bg-[color:var(--accent-soft)] px-5 py-3 text-sm font-medium text-[color:var(--foreground)] transition-transform duration-300 hover:-translate-y-0.5">
+            <button
+              onClick={() => document.getElementById("rsvp")?.scrollIntoView({ behavior: "smooth" })}
+              type="button"
+              className="mt-5 w-full rounded-full bg-[color:var(--accent-soft)] px-5 py-3 text-sm font-medium text-[color:var(--foreground)] transition-transform duration-300 hover:-translate-y-0.5"
+            >
               {invitationContent.actions.primary}
             </button>
             <div className="mt-3">

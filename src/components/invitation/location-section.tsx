@@ -1,7 +1,18 @@
+"use client";
+
+import { useState } from "react";
 import { invitationContent } from "@/content/invitation";
 import { SectionShell } from "@/components/invitation/section-shell";
 
 export function LocationSection() {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopyAddress() {
+    await navigator.clipboard.writeText(invitationContent.location.address);
+    setCopied(true);
+    setTimeout(() => setCopied(false), 2000);
+  }
+
   return (
     <SectionShell
       eyebrow="where to find the princes"
@@ -35,11 +46,19 @@ export function LocationSection() {
           </div>
 
           <div className="grid gap-3 sm:grid-cols-2">
-            <button className="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-[color:var(--foreground-on-accent)] transition-transform duration-300 hover:-translate-y-0.5">
+            <button
+              onClick={() => window.open(`https://map.kakao.com/link/search/${encodeURIComponent("을지로 파티룸")}`, "_blank")}
+              type="button"
+              className="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-[color:var(--foreground-on-accent)] transition-transform duration-300 hover:-translate-y-0.5"
+            >
               {invitationContent.location.ctaPrimary}
             </button>
-            <button className="rounded-full border border-[color:var(--line-strong)] px-5 py-3 text-sm font-medium text-[color:var(--surface)] transition-colors duration-300 hover:bg-white/8">
-              {invitationContent.location.ctaSecondary}
+            <button
+              onClick={() => void handleCopyAddress()}
+              type="button"
+              className="rounded-full border border-[color:var(--line-strong)] px-5 py-3 text-sm font-medium text-[color:var(--surface)] transition-colors duration-300 hover:bg-white/8"
+            >
+              {copied ? "복사됐어요!" : invitationContent.location.ctaSecondary}
             </button>
           </div>
 

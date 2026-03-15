@@ -1,3 +1,5 @@
+"use client";
+
 import { CountdownPanel } from "@/components/invitation/countdown-panel";
 import { ShareActions } from "@/components/invitation/share-actions";
 import { eventDate, invitationContent } from "@/content/invitation";
@@ -124,7 +126,11 @@ export function HeroSection() {
               </div>
 
               <div className="flex flex-col gap-3 sm:min-w-[15rem]">
-                <button className="rounded-full bg-[color:var(--accent-soft)] px-5 py-3 text-sm font-medium text-[color:var(--foreground)] transition-transform duration-300 hover:-translate-y-0.5">
+                <button
+                  onClick={() => document.getElementById("rsvp")?.scrollIntoView({ behavior: "smooth" })}
+                  type="button"
+                  className="rounded-full bg-[color:var(--accent-soft)] px-5 py-3 text-sm font-medium text-[color:var(--foreground)] transition-transform duration-300 hover:-translate-y-0.5"
+                >
                   {invitationContent.actions.primary}
                 </button>
                 <ShareActions compact />
