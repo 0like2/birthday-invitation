@@ -1,36 +1,74 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# Three Princes Birthday Invitation
 
-## Getting Started
+KakaoTalk-shareable mobile invitation microsite for `세 왕자님의 생일파티`.
 
-First, run the development server:
+This project is a frontend-first Next.js invitation site designed for a strong full-screen cover experience on mobile and a polished editorial presentation on desktop.
+
+## Stack
+- Next.js 16 App Router
+- React 19
+- TypeScript
+- Tailwind CSS v4
+
+## Current Sections
+- Hero cover with countdown
+- Invitation message
+- Event info
+- Location
+- Timetable
+- Archive
+- RSVP preview interaction
+- Footer
+
+## Design Direction
+- `Royal Night Editorial` + `Photo Club Princes`
+- elegant invitation hierarchy
+- Korean-first typography
+- one long-scrolling page
+- Kakao/mobile-first layout
+
+## Local Development
 
 ```bash
+npm install
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Open `http://localhost:3000`.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Quality Checks
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```bash
+npm run lint
+npm run build
+```
 
-## Learn More
+## Repository Notes
+- This repository is public.
+- Never commit `.env`, `.env.local`, `.vercel`, tokens, OAuth secrets, or private addresses.
+- Only commit `.env.example` templates if needed.
 
-To learn more about Next.js, take a look at the following resources:
+## Deployment Strategy
+- First release: frontend-only invitation deploy
+- Second release: minimal RSVP backend only if required
+- Later releases: profile cards, gift interactions, message wall, post-event settlement helper
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+See:
+- `docs/prd-final.md`
+- `docs/implementation-design-spec.md`
+- `docs/vercel-deploy-and-db-plan.md`
+- `docs/figma-frame-spec.md`
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+## Supabase Direction
+If backend work starts, Supabase is an acceptable option for:
+- RSVP persistence
+- message cards
+- simple guest/profile-card state
 
-## Deploy on Vercel
+Do not expose service-role keys to the client.
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+See:
+- `docs/supabase-safe-setup.md`
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Deployment Goal
+GitHub repo is intended to be connected to Vercel so pushes to `main` trigger deployments after the project is linked.
