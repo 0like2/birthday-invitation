@@ -12,16 +12,29 @@ export function ArchiveSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Floating prince sticker */}
-        <div className="animate-float-reverse pointer-events-none absolute -right-1 top-2 sm:right-6">
+        {/* Top-right: prince zigzagging */}
+        <div className="animate-zigzag pointer-events-none absolute -right-1 top-0 sm:right-4">
           <Image
             src="/stickers/prince-stickers-c.png"
             alt=""
-            width={70}
-            height={70}
-            className="object-contain object-[50%_50%]"
+            width={55}
+            height={55}
+            className="object-contain object-[0%_33%]"
             quality={85}
           />
+        </div>
+
+        {/* Mid-left: party horn orbiting */}
+        <div className="pointer-events-none absolute left-0 top-1/2 sm:left-4">
+          <div className="animate-orbit">
+            <Image
+              src="/stickers/party-horn.gif"
+              alt=""
+              width={35}
+              height={35}
+              unoptimized
+            />
+          </div>
         </div>
 
         <h2 className="text-center font-serif-display text-2xl text-[color:var(--foreground)]">

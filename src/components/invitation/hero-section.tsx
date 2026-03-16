@@ -8,26 +8,52 @@ export function HeroSection() {
   return (
     <section className="relative overflow-hidden px-4 pb-8 pt-10 sm:px-6">
       <div className="mx-auto max-w-md text-center">
-        {/* Floating sticker - party horn */}
-        <div className="animate-float pointer-events-none absolute left-2 top-16 sm:left-10">
+        {/* Top-left: party horn drifting */}
+        <div className="animate-drift-right pointer-events-none absolute left-2 top-14 sm:left-8">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={70}
-            height={70}
+            width={60}
+            height={60}
             unoptimized
           />
         </div>
 
-        {/* Floating sticker - cute cat */}
-        <div className="animate-float-reverse pointer-events-none absolute right-2 top-20 sm:right-10">
+        {/* Top-right: cat swaying */}
+        <div className="animate-sway pointer-events-none absolute right-1 top-16 sm:right-6">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={65}
-            height={65}
+            width={55}
+            height={55}
             unoptimized
           />
+        </div>
+
+        {/* Bottom-left: prince sticker zigzagging */}
+        <div className="animate-zigzag pointer-events-none absolute bottom-36 left-0 sm:left-4">
+          <Image
+            src="/stickers/prince-stickers-a.png"
+            alt=""
+            width={50}
+            height={50}
+            className="object-contain object-[33%_0%]"
+            quality={85}
+          />
+        </div>
+
+        {/* Bottom-right: prince sticker orbiting */}
+        <div className="pointer-events-none absolute bottom-44 right-0 sm:right-4">
+          <div className="animate-orbit">
+            <Image
+              src="/stickers/prince-stickers-b.png"
+              alt=""
+              width={45}
+              height={45}
+              className="object-contain object-[0%_0%]"
+              quality={85}
+            />
+          </div>
         </div>
 
         {/* Badge */}

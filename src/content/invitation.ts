@@ -13,9 +13,9 @@ export const invitationContent = {
     body: [
       "1996년 3월 20일,\n같은 날 태어난 세 남자가 있었으니…",
       "올해도 어김없이 생일이 돌아왔고,\n이번엔 루프탑에서 제대로 판을 벌린다!",
-      "고기 굽고, 케이크 자르고,\n사진 찍고, 밤새 떠들 준비 됐지?",
+      "케이크 자르고, 사진 찍고,\n밤새 떠들 준비 됐지?",
     ],
-    pullQuote: "왕관은 준비 완료!\n고기도 준비 완료!\n너만 오면 된다!",
+    pullQuote: "장소 잡았고, 케이크 샀고,\n이제 너만 오면 된다!",
   },
   eventInfo: {
     sectionTitle: "파티 정보",
@@ -29,7 +29,7 @@ export const invitationContent = {
       {
         label: "시간",
         value: "저녁 8시",
-        note: "8시 정각! 늦으면 고기 없다!",
+        note: "8시 정각! 늦으면 케이크 없다!",
         icon: "clock",
       },
       {
@@ -41,7 +41,7 @@ export const invitationContent = {
       {
         label: "함께할 사람들",
         value: "소중한 친구들",
-        note: "많이 올수록 고기도 많다!",
+        note: "다 같이 모여야 제맛이지!",
         icon: "people",
       },
     ],
@@ -108,7 +108,7 @@ export const invitationContent = {
     sheetTitle: "어떻게 오실 건가요?",
     sheetDescription: "편한 마음으로 골라주세요!",
     statusNotes: {
-      "갈게요!": "좋아! 왕관이랑 고기 준비해둘게!",
+      "갈게요!": "좋아! 자리 맡아둘게!",
       "고민 중이에요": "ㄱㄷ 천천히 생각해!",
       "늦게 갈 수도!": "괜찮아 올 수 있을 때 와!",
     },

@@ -8,23 +8,36 @@ export function FooterSection() {
   return (
     <footer className="relative px-4 pb-12 pt-8 sm:px-6">
       <div className="mx-auto max-w-md text-center">
-        {/* Floating stickers */}
-        <div className="animate-float pointer-events-none absolute left-4 top-0 sm:left-12">
+        {/* Top-left: prince spinning slow */}
+        <div className="animate-spin-slow pointer-events-none absolute left-4 top-0 sm:left-10">
           <Image
-            src="/stickers/prince-stickers-a.png"
+            src="/stickers/prince-stickers-c.png"
             alt=""
-            width={65}
-            height={65}
-            className="object-contain object-[33%_0%]"
+            width={50}
+            height={50}
+            className="object-contain object-[50%_50%]"
             quality={85}
           />
         </div>
-        <div className="animate-float-reverse pointer-events-none absolute right-4 top-4 sm:right-12">
+
+        {/* Top-right: party horn drifting */}
+        <div className="animate-drift-left pointer-events-none absolute right-2 top-2 sm:right-10">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={55}
-            height={55}
+            width={45}
+            height={45}
+            unoptimized
+          />
+        </div>
+
+        {/* Bottom-left: cat swaying */}
+        <div className="animate-sway pointer-events-none absolute bottom-4 left-2 sm:left-8">
+          <Image
+            src="/stickers/cute-cat.gif"
+            alt=""
+            width={40}
+            height={40}
             unoptimized
           />
         </div>

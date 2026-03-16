@@ -43,14 +43,25 @@ export function GuestbookSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Floating prince sticker */}
-        <div className="animate-float pointer-events-none absolute -right-1 top-4 sm:right-6">
+        {/* Top-right: cat drifting right */}
+        <div className="animate-drift-right pointer-events-none absolute -right-1 top-2 sm:right-4">
           <Image
-            src="/stickers/prince-stickers-b.png"
+            src="/stickers/cute-cat.gif"
             alt=""
-            width={65}
-            height={65}
-            className="object-contain object-[25%_0%]"
+            width={50}
+            height={50}
+            unoptimized
+          />
+        </div>
+
+        {/* Mid-left: prince twinkle */}
+        <div className="animate-twinkle pointer-events-none absolute left-0 top-1/3 sm:left-4">
+          <Image
+            src="/stickers/prince-stickers-a.png"
+            alt=""
+            width={45}
+            height={45}
+            className="object-contain object-[33%_33%]"
             quality={85}
           />
         </div>

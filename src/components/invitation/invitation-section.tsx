@@ -5,15 +5,26 @@ export function InvitationSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Decorative prince sticker */}
-        <div className="animate-wiggle pointer-events-none absolute -right-2 top-4 sm:right-8">
+        {/* Top-right: prince drifting left */}
+        <div className="animate-drift-left pointer-events-none absolute -right-2 top-2 sm:right-6">
           <Image
-            src="/stickers/prince-stickers-a.png"
+            src="/stickers/prince-stickers-c.png"
             alt=""
-            width={80}
-            height={80}
-            className="object-contain object-[0%_0%]"
+            width={60}
+            height={60}
+            className="object-contain object-[50%_50%]"
             quality={85}
+          />
+        </div>
+
+        {/* Bottom-left: cat spinning slow */}
+        <div className="animate-spin-slow pointer-events-none absolute -left-1 bottom-8 sm:left-6">
+          <Image
+            src="/stickers/party-horn.gif"
+            alt=""
+            width={40}
+            height={40}
+            unoptimized
           />
         </div>
 

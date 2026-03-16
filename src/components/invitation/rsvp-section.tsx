@@ -109,14 +109,37 @@ export function RsvpSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        <div className="animate-wiggle pointer-events-none absolute -left-1 top-8 sm:left-6">
+        {/* Top-left: prince sway */}
+        <div className="animate-sway pointer-events-none absolute -left-1 top-6 sm:left-4">
           <Image
-            src="/stickers/prince-stickers-c.png"
+            src="/stickers/prince-stickers-b.png"
             alt=""
-            width={65}
-            height={65}
+            width={55}
+            height={55}
             className="object-contain object-[50%_0%]"
             quality={85}
+          />
+        </div>
+
+        {/* Bottom-right: party horn zigzag */}
+        <div className="animate-zigzag pointer-events-none absolute bottom-16 right-0 sm:right-4">
+          <Image
+            src="/stickers/party-horn.gif"
+            alt=""
+            width={40}
+            height={40}
+            unoptimized
+          />
+        </div>
+
+        {/* Mid-right: cat floating */}
+        <div className="animate-float pointer-events-none absolute right-0 top-1/3 sm:right-2">
+          <Image
+            src="/stickers/cute-cat.gif"
+            alt=""
+            width={40}
+            height={40}
+            unoptimized
           />
         </div>
 
