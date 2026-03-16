@@ -9,34 +9,34 @@ export function FooterSection() {
     <footer className="relative px-4 pb-12 pt-8 sm:px-6">
       <div className="mx-auto max-w-md text-center">
         {/* Top-left: 영락 gift spinning */}
-        <div className="animate-spin-slow pointer-events-none absolute left-4 top-0 sm:left-10">
+        <div className="animate-spin-slow pointer-events-none absolute left-0 -top-2 sm:left-6">
           <Image
             src="/stickers/yeongrak-gift.png"
             alt=""
-            width={50}
-            height={50}
+            width={80}
+            height={80}
             quality={85}
           />
         </div>
 
         {/* Top-right: party horn drifting */}
-        <div className="animate-drift-left pointer-events-none absolute right-2 top-2 sm:right-10">
+        <div className="animate-drift-left pointer-events-none absolute -right-1 top-0 sm:right-6">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={45}
-            height={45}
+            width={65}
+            height={65}
             unoptimized
           />
         </div>
 
         {/* Bottom-left: cat swaying */}
-        <div className="animate-sway pointer-events-none absolute bottom-4 left-2 sm:left-8">
+        <div className="animate-sway pointer-events-none absolute bottom-2 -left-1 sm:left-4">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={40}
-            height={40}
+            width={65}
+            height={65}
             unoptimized
           />
         </div>

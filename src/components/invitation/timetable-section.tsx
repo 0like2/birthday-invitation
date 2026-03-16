@@ -30,34 +30,34 @@ export function TimetableSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-left: 상욱 throne swaying */}
-        <div className="animate-sway pointer-events-none absolute -left-2 top-4 sm:left-4">
+        <div className="animate-sway pointer-events-none absolute -left-3 top-2 sm:left-0">
           <Image
             src="/stickers/sanguk-throne.png"
             alt=""
-            width={55}
-            height={55}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>
 
         {/* Mid-right: cat drifting */}
-        <div className="animate-drift-left pointer-events-none absolute -right-1 top-1/3 sm:right-4">
+        <div className="animate-drift-left pointer-events-none absolute -right-2 top-1/3 sm:right-0">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={45}
-            height={45}
+            width={70}
+            height={70}
             unoptimized
           />
         </div>
 
         {/* Bottom-left: party horn twinkling */}
-        <div className="animate-twinkle pointer-events-none absolute bottom-12 left-0 sm:left-6">
+        <div className="animate-twinkle pointer-events-none absolute bottom-8 -left-1 sm:left-2">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={35}
-            height={35}
+            width={60}
+            height={60}
             unoptimized
           />
         </div>

@@ -6,34 +6,34 @@ export function InvitationSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-right: 영락 confused drifting */}
-        <div className="animate-drift-left pointer-events-none absolute -right-2 top-2 sm:right-6">
+        <div className="animate-drift-left pointer-events-none absolute -right-3 top-0 sm:right-2">
           <Image
             src="/stickers/yeongrak-confused.png"
             alt=""
-            width={55}
-            height={55}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>
 
         {/* Bottom-left: cat spinning slow */}
-        <div className="animate-spin-slow pointer-events-none absolute -left-1 bottom-8 sm:left-6">
+        <div className="animate-spin-slow pointer-events-none absolute -left-2 bottom-6 sm:left-2">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={40}
-            height={40}
+            width={65}
+            height={65}
             unoptimized
           />
         </div>
 
         {/* Bottom-right: 형빈 shy floating */}
-        <div className="animate-float pointer-events-none absolute bottom-12 right-0 sm:right-4">
+        <div className="animate-float pointer-events-none absolute bottom-10 -right-2 sm:right-0">
           <Image
             src="/stickers/hyeongbin-shy.png"
             alt=""
-            width={45}
-            height={45}
+            width={80}
+            height={80}
             quality={85}
           />
         </div>

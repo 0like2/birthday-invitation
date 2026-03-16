@@ -13,24 +13,24 @@ export function ArchiveSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-right: 영락 walking zigzag */}
-        <div className="animate-zigzag pointer-events-none absolute -right-1 top-0 sm:right-4">
+        <div className="animate-zigzag pointer-events-none absolute -right-3 top-0 sm:right-0">
           <Image
             src="/stickers/yeongrak-4.png"
             alt=""
-            width={55}
-            height={55}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>
 
         {/* Mid-left: party horn orbiting */}
-        <div className="pointer-events-none absolute left-0 top-1/2 sm:left-4">
+        <div className="pointer-events-none absolute -left-2 top-1/2 sm:left-0">
           <div className="animate-orbit">
             <Image
               src="/stickers/party-horn.gif"
               alt=""
-              width={35}
-              height={35}
+              width={60}
+              height={60}
               unoptimized
             />
           </div>

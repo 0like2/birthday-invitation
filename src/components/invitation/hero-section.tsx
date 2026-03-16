@@ -9,46 +9,46 @@ export function HeroSection() {
     <section className="relative overflow-hidden px-4 pb-8 pt-10 sm:px-6">
       <div className="mx-auto max-w-md text-center">
         {/* Top-left: party horn drifting */}
-        <div className="animate-drift-right pointer-events-none absolute left-2 top-14 sm:left-8">
+        <div className="animate-drift-right pointer-events-none absolute left-1 top-14 sm:left-6">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={60}
-            height={60}
+            width={75}
+            height={75}
             unoptimized
           />
         </div>
 
         {/* Top-right: cat swaying */}
-        <div className="animate-sway pointer-events-none absolute right-1 top-16 sm:right-6">
+        <div className="animate-sway pointer-events-none absolute right-0 top-16 sm:right-4">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={55}
-            height={55}
+            width={70}
+            height={70}
             unoptimized
           />
         </div>
 
         {/* Bottom-left: 상욱 confused zigzagging */}
-        <div className="animate-zigzag pointer-events-none absolute bottom-36 left-0 sm:left-4">
+        <div className="animate-zigzag pointer-events-none absolute bottom-36 -left-2 sm:left-0">
           <Image
             src="/stickers/sanguk-4.png"
             alt=""
-            width={50}
-            height={50}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>
 
         {/* Bottom-right: 형빈 riding horse orbiting */}
-        <div className="pointer-events-none absolute bottom-44 right-0 sm:right-4">
+        <div className="pointer-events-none absolute bottom-44 -right-2 sm:right-0">
           <div className="animate-orbit">
             <Image
               src="/stickers/hyeongbin-4.png"
               alt=""
-              width={50}
-              height={50}
+              width={85}
+              height={85}
               quality={85}
             />
           </div>

@@ -110,34 +110,34 @@ export function RsvpSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-left: 형빈 magic sway */}
-        <div className="animate-sway pointer-events-none absolute -left-1 top-6 sm:left-4">
+        <div className="animate-sway pointer-events-none absolute -left-3 top-4 sm:left-0">
           <Image
             src="/stickers/hyeongbin-magic.png"
             alt=""
-            width={55}
-            height={55}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>
 
         {/* Bottom-right: party horn zigzag */}
-        <div className="animate-zigzag pointer-events-none absolute bottom-16 right-0 sm:right-4">
+        <div className="animate-zigzag pointer-events-none absolute bottom-14 -right-2 sm:right-0">
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={40}
-            height={40}
+            width={65}
+            height={65}
             unoptimized
           />
         </div>
 
         {/* Mid-right: cat floating */}
-        <div className="animate-float pointer-events-none absolute right-0 top-1/3 sm:right-2">
+        <div className="animate-float pointer-events-none absolute -right-1 top-1/3 sm:right-0">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={40}
-            height={40}
+            width={65}
+            height={65}
             unoptimized
           />
         </div>

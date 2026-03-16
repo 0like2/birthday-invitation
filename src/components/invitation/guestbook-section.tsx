@@ -44,23 +44,23 @@ export function GuestbookSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-right: cat drifting right */}
-        <div className="animate-drift-right pointer-events-none absolute -right-1 top-2 sm:right-4">
+        <div className="animate-drift-right pointer-events-none absolute -right-2 top-0 sm:right-0">
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={50}
-            height={50}
+            width={70}
+            height={70}
             unoptimized
           />
         </div>
 
         {/* Mid-left: 상욱 treasure twinkle */}
-        <div className="animate-twinkle pointer-events-none absolute left-0 top-1/3 sm:left-4">
+        <div className="animate-twinkle pointer-events-none absolute -left-2 top-1/3 sm:left-0">
           <Image
             src="/stickers/sanguk-treasure.png"
             alt=""
-            width={50}
-            height={50}
+            width={85}
+            height={85}
             quality={85}
           />
         </div>

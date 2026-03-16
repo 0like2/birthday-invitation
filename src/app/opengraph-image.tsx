@@ -10,12 +10,9 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  // 한국어 포함 woff 폰트 파일 로드
+  // 한국어 포함 woff2 폰트 파일 로드 (로컬)
   const fontData = await readFile(
-    join(
-      process.cwd(),
-      "node_modules/@fontsource/noto-sans-kr/files/noto-sans-kr-24-700-normal.woff",
-    ),
+    join(process.cwd(), "src/app/fonts/NotoSansKR-Bold.otf"),
   );
 
   // 동그라미 배너 이미지 로드
