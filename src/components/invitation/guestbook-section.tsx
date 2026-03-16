@@ -54,14 +54,13 @@ export function GuestbookSection() {
           />
         </div>
 
-        {/* Mid-left: prince twinkle */}
+        {/* Mid-left: 상욱 treasure twinkle */}
         <div className="animate-twinkle pointer-events-none absolute left-0 top-1/3 sm:left-4">
           <Image
-            src="/stickers/prince-stickers-a.png"
+            src="/stickers/sanguk-treasure.png"
             alt=""
-            width={45}
-            height={45}
-            className="object-contain object-[33%_33%]"
+            width={50}
+            height={50}
             quality={85}
           />
         </div>

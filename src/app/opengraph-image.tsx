@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
+import { readFile } from "node:fs/promises";
+import { join } from "node:path";
 
-export const runtime = "edge";
 export const size = {
   width: 1200,
   height: 630,
@@ -9,17 +10,26 @@ export const size = {
 export const contentType = "image/png";
 
 export default async function OpengraphImage() {
-  const fontData = await fetch(
-    new URL(
-      "https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.woff",
+  // 한국어 포함 woff 폰트 파일 로드
+  const fontData = await readFile(
+    join(
+      process.cwd(),
+      "node_modules/@fontsource/noto-sans-kr/files/noto-sans-kr-24-700-normal.woff",
     ),
-  ).then((res) => res.arrayBuffer());
+  );
+
+  // 동그라미 배너 이미지 로드
+  const bannerData = await readFile(
+    join(process.cwd(), "public/stickers/donggrami-banner.jpg"),
+  );
+  const bannerBase64 = `data:image/jpeg;base64,${bannerData.toString("base64")}`;
 
   return new ImageResponse(
     (
       <div
         style={{
           display: "flex",
+          flexDirection: "column",
           height: "100%",
           width: "100%",
           background:
@@ -27,51 +37,32 @@ export default async function OpengraphImage() {
           fontFamily: '"Noto Sans KR", sans-serif',
           position: "relative",
           overflow: "hidden",
+          alignItems: "center",
+          justifyContent: "center",
+          padding: "32px",
         }}
       >
         {/* Decorative circles */}
         <div
           style={{
             position: "absolute",
-            top: -60,
-            left: -40,
-            width: 220,
-            height: 220,
+            top: -40,
+            left: -30,
+            width: 160,
+            height: 160,
             borderRadius: 9999,
-            background: "rgba(255, 194, 209, 0.5)",
+            background: "rgba(255, 194, 209, 0.4)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            bottom: -50,
-            right: -30,
-            width: 200,
-            height: 200,
+            bottom: -30,
+            right: -20,
+            width: 140,
+            height: 140,
             borderRadius: 9999,
-            background: "rgba(184, 232, 208, 0.4)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            top: 40,
-            right: 80,
-            width: 120,
-            height: 120,
-            borderRadius: 9999,
-            background: "rgba(232, 218, 248, 0.5)",
-          }}
-        />
-        <div
-          style={{
-            position: "absolute",
-            bottom: 100,
-            left: 60,
-            width: 80,
-            height: 80,
-            borderRadius: 9999,
-            background: "rgba(255, 214, 95, 0.3)",
+            background: "rgba(184, 232, 208, 0.35)",
           }}
         />
 
@@ -82,183 +73,109 @@ export default async function OpengraphImage() {
             flexDirection: "column",
             alignItems: "center",
             justifyContent: "center",
+            background: "rgba(255, 255, 255, 0.9)",
+            borderRadius: 36,
+            border: "3px solid rgba(255, 107, 138, 0.2)",
+            padding: "32px 40px",
             width: "100%",
             height: "100%",
-            padding: "40px 60px",
-            position: "relative",
+            gap: 20,
           }}
         >
-          {/* Inner card */}
+          {/* 동그라미 배너 이미지 */}
+          <img
+            src={bannerBase64}
+            width={1100}
+            height={220}
+            style={{
+              borderRadius: 16,
+              objectFit: "contain",
+              width: "100%",
+              maxHeight: 220,
+            }}
+          />
+
+          {/* Info row */}
           <div
             style={{
               display: "flex",
-              flexDirection: "column",
+              gap: 20,
               alignItems: "center",
-              justifyContent: "center",
-              background: "rgba(255, 255, 255, 0.85)",
-              borderRadius: 40,
-              border: "3px solid rgba(255, 107, 138, 0.2)",
-              padding: "44px 60px",
-              width: "100%",
-              height: "100%",
-              position: "relative",
             }}
           >
-            {/* Top badge */}
             <div
               style={{
-                display: "flex",
-                alignItems: "center",
-                gap: 8,
                 padding: "10px 24px",
                 borderRadius: 9999,
                 background: "rgba(255, 194, 209, 0.5)",
-                fontSize: 22,
+                fontSize: 24,
                 color: "#e8457c",
                 fontWeight: 700,
-                letterSpacing: "0.1em",
               }}
             >
               BIRTHDAY PARTY
             </div>
-
-            {/* Title */}
             <div
               style={{
-                display: "flex",
-                flexDirection: "column",
-                alignItems: "center",
-                marginTop: 24,
-              }}
-            >
-              <div
-                style={{
-                  fontSize: 80,
-                  fontWeight: 800,
-                  color: "#4a3728",
-                  lineHeight: 1.1,
-                  textAlign: "center",
-                  letterSpacing: "-0.03em",
-                }}
-              >
-                세 왕자님의 생일파티
-              </div>
-            </div>
-
-            {/* Names */}
-            <div
-              style={{
-                display: "flex",
-                gap: 16,
-                marginTop: 24,
-                fontSize: 28,
-                color: "#e8457c",
-                fontWeight: 700,
-              }}
-            >
-              <span
-                style={{
-                  padding: "8px 20px",
-                  borderRadius: 9999,
-                  background: "rgba(255, 194, 209, 0.3)",
-                  border: "2px solid rgba(255, 107, 138, 0.2)",
-                }}
-              >
-                고형빈
-              </span>
-              <span
-                style={{
-                  padding: "8px 20px",
-                  borderRadius: 9999,
-                  background: "rgba(232, 218, 248, 0.3)",
-                  border: "2px solid rgba(196, 168, 232, 0.3)",
-                }}
-              >
-                이상욱
-              </span>
-              <span
-                style={{
-                  padding: "8px 20px",
-                  borderRadius: 9999,
-                  background: "rgba(184, 232, 208, 0.3)",
-                  border: "2px solid rgba(126, 203, 161, 0.3)",
-                }}
-              >
-                이영락
-              </span>
-            </div>
-
-            {/* Date & Location */}
-            <div
-              style={{
-                display: "flex",
-                gap: 24,
-                marginTop: 28,
-                alignItems: "center",
-              }}
-            >
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "14px 28px",
-                  borderRadius: 24,
-                  background: "rgba(255, 248, 231, 0.8)",
-                  border: "2px solid rgba(255, 214, 95, 0.3)",
-                }}
-              >
-                <div style={{ fontSize: 18, color: "rgba(74,55,40,0.6)" }}>
-                  날짜
-                </div>
-                <div
-                  style={{
-                    fontSize: 28,
-                    fontWeight: 700,
-                    color: "#4a3728",
-                    marginTop: 4,
-                  }}
-                >
-                  2026. 3. 20 금요일
-                </div>
-              </div>
-              <div
-                style={{
-                  display: "flex",
-                  flexDirection: "column",
-                  alignItems: "center",
-                  padding: "14px 28px",
-                  borderRadius: 24,
-                  background: "rgba(255, 232, 236, 0.6)",
-                  border: "2px solid rgba(255, 107, 138, 0.15)",
-                }}
-              >
-                <div style={{ fontSize: 18, color: "rgba(74,55,40,0.6)" }}>
-                  시간 & 장소
-                </div>
-                <div
-                  style={{
-                    fontSize: 28,
-                    fontWeight: 700,
-                    color: "#4a3728",
-                    marginTop: 4,
-                  }}
-                >
-                  오후 8시 · 을지로
-                </div>
-              </div>
-            </div>
-
-            {/* Bottom quote */}
-            <div
-              style={{
-                marginTop: 24,
+                padding: "10px 24px",
+                borderRadius: 20,
+                background: "rgba(255, 248, 231, 0.8)",
+                border: "2px solid rgba(255, 214, 95, 0.3)",
                 fontSize: 24,
-                color: "rgba(74, 55, 40, 0.6)",
+                fontWeight: 700,
+                color: "#4a3728",
               }}
             >
-              왕관은 준비됐고, 이제 사람만 오면 됩니다!
+              2026. 3. 20
             </div>
+          </div>
+
+          {/* Names */}
+          <div
+            style={{
+              display: "flex",
+              gap: 12,
+              fontSize: 26,
+              color: "#e8457c",
+              fontWeight: 700,
+            }}
+          >
+            <span
+              style={{
+                padding: "8px 20px",
+                borderRadius: 9999,
+                background: "rgba(255, 194, 209, 0.3)",
+              }}
+            >
+              고형빈
+            </span>
+            <span
+              style={{
+                padding: "8px 20px",
+                borderRadius: 9999,
+                background: "rgba(232, 218, 248, 0.3)",
+              }}
+            >
+              이상욱
+            </span>
+            <span
+              style={{
+                padding: "8px 20px",
+                borderRadius: 9999,
+                background: "rgba(184, 232, 208, 0.3)",
+              }}
+            >
+              이영락
+            </span>
+          </div>
+
+          <div
+            style={{
+              fontSize: 24,
+              color: "rgba(74, 55, 40, 0.55)",
+            }}
+          >
+            장소 잡았고, 케이크 샀고, 너만 오면 된다!
           </div>
         </div>
       </div>

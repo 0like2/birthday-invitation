@@ -5,14 +5,13 @@ export function InvitationSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Top-right: prince drifting left */}
+        {/* Top-right: 영락 confused drifting */}
         <div className="animate-drift-left pointer-events-none absolute -right-2 top-2 sm:right-6">
           <Image
-            src="/stickers/prince-stickers-c.png"
+            src="/stickers/yeongrak-confused.png"
             alt=""
-            width={60}
-            height={60}
-            className="object-contain object-[50%_50%]"
+            width={55}
+            height={55}
             quality={85}
           />
         </div>
@@ -28,6 +27,17 @@ export function InvitationSection() {
           />
         </div>
 
+        {/* Bottom-right: 형빈 shy floating */}
+        <div className="animate-float pointer-events-none absolute bottom-12 right-0 sm:right-4">
+          <Image
+            src="/stickers/hyeongbin-shy.png"
+            alt=""
+            width={45}
+            height={45}
+            quality={85}
+          />
+        </div>
+
         <div className="rounded-3xl border border-[color:var(--accent-soft)] bg-white p-6 shadow-lg shadow-[rgba(255,107,138,0.08)]">
           <h2 className="text-center font-serif-display text-2xl text-[color:var(--accent-deep)]">
             {invitationContent.invitation.sectionTitle}
@@ -38,7 +48,7 @@ export function InvitationSection() {
           {/* Three Princes Transparent Illustration */}
           <div className="mx-auto mt-4 w-48">
             <Image
-              src="/stickers/three-princes-transparent.png"
+              src="/stickers/three-princes-new.png"
               alt="세 왕자님"
               width={400}
               height={400}

@@ -109,14 +109,13 @@ export function RsvpSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Top-left: prince sway */}
+        {/* Top-left: 형빈 magic sway */}
         <div className="animate-sway pointer-events-none absolute -left-1 top-6 sm:left-4">
           <Image
-            src="/stickers/prince-stickers-b.png"
+            src="/stickers/hyeongbin-magic.png"
             alt=""
             width={55}
             height={55}
-            className="object-contain object-[50%_0%]"
             quality={85}
           />
         </div>

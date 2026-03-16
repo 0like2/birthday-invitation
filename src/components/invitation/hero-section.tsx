@@ -30,34 +30,44 @@ export function HeroSection() {
           />
         </div>
 
-        {/* Bottom-left: prince sticker zigzagging */}
+        {/* Bottom-left: 상욱 confused zigzagging */}
         <div className="animate-zigzag pointer-events-none absolute bottom-36 left-0 sm:left-4">
           <Image
-            src="/stickers/prince-stickers-a.png"
+            src="/stickers/sanguk-4.png"
             alt=""
             width={50}
             height={50}
-            className="object-contain object-[33%_0%]"
             quality={85}
           />
         </div>
 
-        {/* Bottom-right: prince sticker orbiting */}
+        {/* Bottom-right: 형빈 riding horse orbiting */}
         <div className="pointer-events-none absolute bottom-44 right-0 sm:right-4">
           <div className="animate-orbit">
             <Image
-              src="/stickers/prince-stickers-b.png"
+              src="/stickers/hyeongbin-4.png"
               alt=""
-              width={45}
-              height={45}
-              className="object-contain object-[0%_0%]"
+              width={50}
+              height={50}
               quality={85}
             />
           </div>
         </div>
 
+        {/* Donggrami Banner - full width */}
+        <div className="mx-auto overflow-hidden rounded-2xl shadow-md">
+          <Image
+            src="/stickers/donggrami-banner.jpg"
+            alt="제1회 동그라미 생일파티 - 동그라미 왕자님들 생신이시다"
+            width={1200}
+            height={240}
+            className="w-full"
+            priority
+          />
+        </div>
+
         {/* Badge */}
-        <div className="mx-auto inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-soft)] px-4 py-2 text-xs font-medium tracking-wider text-[color:var(--accent-deep)]">
+        <div className="mx-auto mt-5 inline-flex items-center gap-2 rounded-full bg-[color:var(--accent-soft)] px-4 py-2 text-xs font-medium tracking-wider text-[color:var(--accent-deep)]">
           {invitationContent.hero.badge}
         </div>
 

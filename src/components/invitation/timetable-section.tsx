@@ -29,14 +29,13 @@ export function TimetableSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Top-left: prince sticker swaying */}
+        {/* Top-left: 상욱 throne swaying */}
         <div className="animate-sway pointer-events-none absolute -left-2 top-4 sm:left-4">
           <Image
-            src="/stickers/prince-stickers-a.png"
+            src="/stickers/sanguk-throne.png"
             alt=""
             width={55}
             height={55}
-            className="object-contain object-[66%_0%]"
             quality={85}
           />
         </div>

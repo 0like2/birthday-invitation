@@ -12,14 +12,13 @@ export function ArchiveSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Top-right: prince zigzagging */}
+        {/* Top-right: 영락 walking zigzag */}
         <div className="animate-zigzag pointer-events-none absolute -right-1 top-0 sm:right-4">
           <Image
-            src="/stickers/prince-stickers-c.png"
+            src="/stickers/yeongrak-4.png"
             alt=""
             width={55}
             height={55}
-            className="object-contain object-[0%_33%]"
             quality={85}
           />
         </div>
