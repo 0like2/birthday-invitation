@@ -164,7 +164,7 @@ export default async function OpengraphImage() {
                   border: "2px solid rgba(255, 107, 138, 0.2)",
                 }}
               >
-                이상욱
+                고형빈
               </span>
               <span
                 style={{
@@ -174,7 +174,7 @@ export default async function OpengraphImage() {
                   border: "2px solid rgba(196, 168, 232, 0.3)",
                 }}
               >
-                고형빈
+                이상욱
               </span>
               <span
                 style={{

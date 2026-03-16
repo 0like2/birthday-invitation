@@ -3,7 +3,7 @@ export const invitationContent = {
     title: "세 왕자님의\n생일파티",
     eyebrow: "2026. 03. 20 FRI",
     subtitle: "같은 날 태어난 세 왕자님의\n성대한 생일잔치에 초대합니다!",
-    names: ["이상욱", "고형빈", "이영락"],
+    names: ["고형빈", "이상욱", "이영락"],
     countdownLabel: "파티까지 남은 시간",
     venue: "을지로 파티룸",
     venueNote: "최종 장소는 추후 안내드릴게요!",
@@ -128,7 +128,7 @@ export const invitationContent = {
   },
   footer: {
     closing: "와주셔서 정말 고마워요!\n세 왕자님의 밤을 함께해주세요!",
-    signoff: "상욱 & 형빈 & 영락",
+    signoff: "형빈 & 상욱 & 영락",
     note: "2026 Birthday Party in Euljiro",
     contactLabel: "문의",
     contactValue: "주최자에게 연락해주세요!",

@@ -4,15 +4,15 @@ import Image from "next/image";
 
 const princes = [
   {
-    name: "이상욱",
-    image: "/stickers/prince-sanguk.png",
+    name: "고형빈",
+    image: "/stickers/prince-hyeongbin.png",
     color: "from-pink-100 to-rose-50",
     borderColor: "border-pink-200",
     delay: "0s",
   },
   {
-    name: "고형빈",
-    image: "/stickers/prince-hyeongbin.png",
+    name: "이상욱",
+    image: "/stickers/prince-sanguk.png",
     color: "from-violet-100 to-purple-50",
     borderColor: "border-violet-200",
     delay: "0.3s",
