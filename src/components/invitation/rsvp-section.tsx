@@ -19,8 +19,74 @@ const optionStyles = [
 ];
 
 export function RsvpSection() {
+  const [name, setName] = useState("");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
-  const [isSheetOpen, setIsSheetOpen] = useState(false);
+  const [submitted, setSubmitted] = useState(false);
+
+  function handleSubmit() {
+    if (!name.trim() || !selectedOption) return;
+    setSubmitted(true);
+  }
+
+  function handleShareViaKakao() {
+    const message = `[세 왕자님의 생일파티 RSVP]\n이름: ${name}\n응답: ${selectedOption}`;
+    const encodedMessage = encodeURIComponent(message);
+
+    // 모바일에서 카카오톡 공유 or 클립보드 복사 fallback
+    if (navigator.share) {
+      void navigator.share({
+        title: "세 왕자님의 생일파티 RSVP",
+        text: message,
+      });
+    } else {
+      void navigator.clipboard.writeText(message);
+      alert("응답이 클립보드에 복사되었어요!\n주최자에게 붙여넣기로 전달해주세요!");
+    }
+  }
+
+  if (submitted) {
+    return (
+      <section className="px-4 py-8 sm:px-6">
+        <div className="mx-auto max-w-md">
+          <div className="rounded-3xl border border-[color:var(--accent-soft)] bg-white p-6 shadow-lg shadow-[rgba(255,107,138,0.08)] text-center">
+            <div className="text-4xl">🎉</div>
+            <h2 className="mt-3 font-serif-display text-2xl text-[color:var(--foreground)]">
+              감사합니다, {name}님!
+            </h2>
+            <div className="mt-4 rounded-2xl bg-[color:var(--surface-strong)] p-4">
+              <p className="text-sm text-[color:var(--muted-foreground)]">내 응답</p>
+              <p className="mt-1 text-lg font-bold text-[color:var(--accent-deep)]">
+                {selectedOption}
+              </p>
+              <p className="mt-1 text-xs text-[color:var(--muted-foreground)]">
+                {getStatusNote(selectedOption!)}
+              </p>
+            </div>
+
+            <button
+              onClick={handleShareViaKakao}
+              type="button"
+              className="mt-5 w-full rounded-full bg-[color:var(--accent)] px-5 py-3.5 text-sm font-bold text-white shadow-md shadow-[rgba(255,107,138,0.25)] transition-transform duration-300 hover:-translate-y-0.5"
+            >
+              주최자에게 응답 전달하기
+            </button>
+
+            <button
+              onClick={() => {
+                setSubmitted(false);
+                setName("");
+                setSelectedOption(null);
+              }}
+              type="button"
+              className="mt-2 text-sm text-[color:var(--muted-foreground)] underline"
+            >
+              다시 입력하기
+            </button>
+          </div>
+        </div>
+      </section>
+    );
+  }
 
   return (
     <section className="relative px-4 py-8 sm:px-6">
@@ -44,21 +110,29 @@ export function RsvpSection() {
             </h2>
           </div>
 
-          {selectedOption && (
-            <div className="mt-5 rounded-2xl bg-[color:var(--surface-strong)] p-4 text-center">
-              <p className="text-xs font-medium text-[color:var(--accent-deep)]">
-                내 응답
-              </p>
-              <p className="mt-1 font-bold text-[color:var(--foreground)]">
-                {selectedOption}
-              </p>
-              <p className="mt-1 text-xs text-[color:var(--muted-foreground)]">
-                {getStatusNote(selectedOption)}
-              </p>
-            </div>
-          )}
+          {/* Name input */}
+          <div className="mt-5">
+            <label
+              htmlFor="rsvp-name"
+              className="block text-center text-sm font-medium text-[color:var(--foreground)]/80"
+            >
+              이름을 알려주세요!
+            </label>
+            <input
+              id="rsvp-name"
+              type="text"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              placeholder="이름 입력"
+              className="mt-2 w-full rounded-full border-2 border-[color:var(--accent-soft)] bg-[color:var(--surface-strong)] px-5 py-3 text-center text-sm font-medium text-[color:var(--foreground)] placeholder:text-[color:var(--muted-foreground)] outline-none transition-colors focus:border-[color:var(--accent)] focus:bg-white"
+            />
+          </div>
 
+          {/* Options */}
           <div className="mt-5 space-y-2.5">
+            <p className="text-center text-sm font-medium text-[color:var(--foreground)]/80">
+              참석 여부를 선택해주세요!
+            </p>
             {invitationContent.rsvp.options.map((option, index) => {
               const isSelected = selectedOption === option;
               return (
@@ -68,7 +142,8 @@ export function RsvpSection() {
                   type="button"
                   className={`w-full rounded-full px-5 py-3.5 text-sm font-bold transition-all duration-300 ${
                     isSelected
-                      ? "ring-2 ring-[color:var(--accent)] ring-offset-2 " + optionStyles[index]
+                      ? "ring-2 ring-[color:var(--accent)] ring-offset-2 " +
+                        optionStyles[index]
                       : optionStyles[index]
                   } hover:-translate-y-0.5`}
                 >
@@ -78,52 +153,21 @@ export function RsvpSection() {
             })}
           </div>
 
-          <p className="mt-5 text-center text-xs text-[color:var(--muted-foreground)]">
-            {invitationContent.rsvp.helper}
+          {/* Submit */}
+          <button
+            onClick={handleSubmit}
+            disabled={!name.trim() || !selectedOption}
+            type="button"
+            className="mt-5 w-full rounded-full bg-[color:var(--foreground)] px-5 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-40 disabled:hover:translate-y-0"
+          >
+            응답 완료!
+          </button>
+
+          <p className="mt-3 text-center text-xs text-[color:var(--muted-foreground)]">
+            {invitationContent.rsvp.contactFallback}
           </p>
         </div>
       </div>
-
-      {isSheetOpen && (
-        <div className="fixed inset-0 z-50 flex items-end justify-center bg-black/30 px-4 pb-4 pt-10 md:items-center md:py-8">
-          <div className="w-full max-w-md rounded-3xl bg-white p-6 shadow-2xl">
-            <div className="mx-auto h-1.5 w-12 rounded-full bg-[color:var(--surface-strong)] md:hidden" />
-            <div className="mt-3 text-center">
-              <h4 className="font-serif-display text-xl text-[color:var(--foreground)]">
-                {invitationContent.rsvp.sheetTitle}
-              </h4>
-            </div>
-            <div className="mt-5 space-y-2.5">
-              {invitationContent.rsvp.options.map((option, index) => (
-                <button
-                  key={option}
-                  className={`w-full rounded-2xl px-4 py-4 text-left text-sm font-medium transition-colors ${
-                    selectedOption === option
-                      ? "border-2 border-[color:var(--accent)] bg-[color:var(--surface-strong)]"
-                      : "border border-[color:var(--line-soft)] bg-[color:var(--surface)] hover:bg-[color:var(--surface-strong)]"
-                  }`}
-                  onClick={() => setSelectedOption(option)}
-                  type="button"
-                >
-                  <span className="block text-[color:var(--foreground)]">
-                    {option}
-                  </span>
-                  <span className="mt-1 block text-xs text-[color:var(--muted-foreground)]">
-                    {getStatusNote(option)}
-                  </span>
-                </button>
-              ))}
-            </div>
-            <button
-              className="mt-5 w-full rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-bold text-white"
-              onClick={() => setIsSheetOpen(false)}
-              type="button"
-            >
-              확인
-            </button>
-          </div>
-        </div>
-      )}
     </section>
   );
 }

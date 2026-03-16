@@ -10,7 +10,9 @@ export const contentType = "image/png";
 
 export default async function OpengraphImage() {
   const fontData = await fetch(
-    new URL("https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.woff")
+    new URL(
+      "https://fonts.gstatic.com/s/notosanskr/v36/PbyxFmXiEBPT4ITbgNA5Cgms3VYcOA-vvnIzzuoyeLTq8H4hfeE.woff",
+    ),
   ).then((res) => res.arrayBuffer());
 
   return new ImageResponse(
@@ -20,157 +22,242 @@ export default async function OpengraphImage() {
           display: "flex",
           height: "100%",
           width: "100%",
-          position: "relative",
           background:
-            "linear-gradient(135deg, #fffaf2 0%, #ffe8d8 45%, #f7d6d3 100%)",
-          color: "#1f2140",
+            "linear-gradient(180deg, #fff5f5 0%, #fff0f3 40%, #fce4ec 100%)",
           fontFamily: '"Noto Sans KR", sans-serif',
+          position: "relative",
           overflow: "hidden",
         }}
       >
+        {/* Decorative circles */}
         <div
           style={{
             position: "absolute",
-            inset: 32,
-            borderRadius: 36,
-            border: "3px solid rgba(31,33,64,0.1)",
-            background:
-              "linear-gradient(180deg, rgba(255,255,255,0.82), rgba(255,255,255,0.55))",
+            top: -60,
+            left: -40,
+            width: 220,
+            height: 220,
+            borderRadius: 9999,
+            background: "rgba(255, 194, 209, 0.5)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            top: -80,
-            right: -40,
-            width: 280,
-            height: 280,
+            bottom: -50,
+            right: -30,
+            width: 200,
+            height: 200,
             borderRadius: 9999,
-            background: "rgba(255, 91, 91, 0.18)",
+            background: "rgba(184, 232, 208, 0.4)",
           }}
         />
         <div
           style={{
             position: "absolute",
-            bottom: -60,
-            left: -20,
-            width: 260,
-            height: 260,
+            top: 40,
+            right: 80,
+            width: 120,
+            height: 120,
             borderRadius: 9999,
-            background: "rgba(63, 99, 255, 0.16)",
+            background: "rgba(232, 218, 248, 0.5)",
+          }}
+        />
+        <div
+          style={{
+            position: "absolute",
+            bottom: 100,
+            left: 60,
+            width: 80,
+            height: 80,
+            borderRadius: 9999,
+            background: "rgba(255, 214, 95, 0.3)",
           }}
         />
 
+        {/* Main card */}
         <div
           style={{
             display: "flex",
             flexDirection: "column",
-            justifyContent: "space-between",
-            padding: "72px 80px",
+            alignItems: "center",
+            justifyContent: "center",
             width: "100%",
+            height: "100%",
+            padding: "40px 60px",
             position: "relative",
           }}
         >
-          <div style={{ display: "flex", justifyContent: "space-between" }}>
+          {/* Inner card */}
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "column",
+              alignItems: "center",
+              justifyContent: "center",
+              background: "rgba(255, 255, 255, 0.85)",
+              borderRadius: 40,
+              border: "3px solid rgba(255, 107, 138, 0.2)",
+              padding: "44px 60px",
+              width: "100%",
+              height: "100%",
+              position: "relative",
+            }}
+          >
+            {/* Top badge */}
             <div
               style={{
                 display: "flex",
                 alignItems: "center",
-                gap: 12,
-                padding: "10px 18px",
+                gap: 8,
+                padding: "10px 24px",
                 borderRadius: 9999,
-                background: "rgba(31,33,64,0.08)",
-                fontSize: 24,
+                background: "rgba(255, 194, 209, 0.5)",
+                fontSize: 22,
+                color: "#e8457c",
+                fontWeight: 700,
+                letterSpacing: "0.1em",
               }}
             >
-              <span
-                style={{
-                  width: 12,
-                  height: 12,
-                  borderRadius: 9999,
-                  background: "#ff5b5b",
-                }}
-              />
-              세 왕자님 대잔치
+              BIRTHDAY PARTY
             </div>
-            <div
-              style={{
-                padding: "10px 18px",
-                borderRadius: 9999,
-                background: "rgba(255,255,255,0.62)",
-                border: "2px dashed rgba(31,33,64,0.12)",
-                fontSize: 20,
-              }}
-            >
-              2026.03.20 FRI · 8PM
-            </div>
-          </div>
 
-          <div style={{ display: "flex", flexDirection: "column", gap: 16 }}>
-            <div
-              style={{
-                display: "flex",
-                gap: 12,
-                fontSize: 26,
-                color: "rgba(31,33,64,0.72)",
-              }}
-            >
-              <span>이상욱</span>
-              <span>·</span>
-              <span>고형빈</span>
-              <span>·</span>
-              <span>이영락</span>
-            </div>
-            <div
-              style={{
-                fontSize: 92,
-                lineHeight: 0.94,
-                fontWeight: 800,
-                letterSpacing: "-0.06em",
-                maxWidth: 760,
-              }}
-            >
-              세 왕자님의 생일파티
-            </div>
-            <div
-              style={{
-                fontSize: 34,
-                lineHeight: 1.35,
-                maxWidth: 760,
-                color: "rgba(31,33,64,0.8)",
-              }}
-            >
-              같은 날 태어난 세 왕자님의 성대한 생일잔치.
-              <br />
-              을지로에서 웃고 떠들 밤을 함께 만들어주세요.
-            </div>
-          </div>
-
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "end" }}>
+            {/* Title */}
             <div
               style={{
                 display: "flex",
                 flexDirection: "column",
-                gap: 10,
-                padding: "22px 24px",
-                borderRadius: 28,
-                background: "rgba(255,255,255,0.72)",
-                border: "2px solid rgba(31,33,64,0.08)",
+                alignItems: "center",
+                marginTop: 24,
               }}
             >
-              <div style={{ fontSize: 22, color: "rgba(31,33,64,0.6)" }}>장소</div>
-              <div style={{ fontSize: 38, fontWeight: 700 }}>을지로 파티룸</div>
+              <div
+                style={{
+                  fontSize: 80,
+                  fontWeight: 800,
+                  color: "#4a3728",
+                  lineHeight: 1.1,
+                  textAlign: "center",
+                  letterSpacing: "-0.03em",
+                }}
+              >
+                세 왕자님의 생일파티
+              </div>
             </div>
+
+            {/* Names */}
             <div
               style={{
-                padding: "20px 24px",
-                borderRadius: 28,
-                background: "#1f2140",
-                color: "#fff7ee",
-                fontSize: 30,
+                display: "flex",
+                gap: 16,
+                marginTop: 24,
+                fontSize: 28,
+                color: "#e8457c",
+                fontWeight: 700,
               }}
             >
-              왕관은 준비됐고, 이제 사람만 오면 됩니다
+              <span
+                style={{
+                  padding: "8px 20px",
+                  borderRadius: 9999,
+                  background: "rgba(255, 194, 209, 0.3)",
+                  border: "2px solid rgba(255, 107, 138, 0.2)",
+                }}
+              >
+                이상욱
+              </span>
+              <span
+                style={{
+                  padding: "8px 20px",
+                  borderRadius: 9999,
+                  background: "rgba(232, 218, 248, 0.3)",
+                  border: "2px solid rgba(196, 168, 232, 0.3)",
+                }}
+              >
+                고형빈
+              </span>
+              <span
+                style={{
+                  padding: "8px 20px",
+                  borderRadius: 9999,
+                  background: "rgba(184, 232, 208, 0.3)",
+                  border: "2px solid rgba(126, 203, 161, 0.3)",
+                }}
+              >
+                이영락
+              </span>
+            </div>
+
+            {/* Date & Location */}
+            <div
+              style={{
+                display: "flex",
+                gap: 24,
+                marginTop: 28,
+                alignItems: "center",
+              }}
+            >
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "14px 28px",
+                  borderRadius: 24,
+                  background: "rgba(255, 248, 231, 0.8)",
+                  border: "2px solid rgba(255, 214, 95, 0.3)",
+                }}
+              >
+                <div style={{ fontSize: 18, color: "rgba(74,55,40,0.6)" }}>
+                  날짜
+                </div>
+                <div
+                  style={{
+                    fontSize: 28,
+                    fontWeight: 700,
+                    color: "#4a3728",
+                    marginTop: 4,
+                  }}
+                >
+                  2026. 3. 20 금요일
+                </div>
+              </div>
+              <div
+                style={{
+                  display: "flex",
+                  flexDirection: "column",
+                  alignItems: "center",
+                  padding: "14px 28px",
+                  borderRadius: 24,
+                  background: "rgba(255, 232, 236, 0.6)",
+                  border: "2px solid rgba(255, 107, 138, 0.15)",
+                }}
+              >
+                <div style={{ fontSize: 18, color: "rgba(74,55,40,0.6)" }}>
+                  시간 & 장소
+                </div>
+                <div
+                  style={{
+                    fontSize: 28,
+                    fontWeight: 700,
+                    color: "#4a3728",
+                    marginTop: 4,
+                  }}
+                >
+                  오후 8시 · 을지로
+                </div>
+              </div>
+            </div>
+
+            {/* Bottom quote */}
+            <div
+              style={{
+                marginTop: 24,
+                fontSize: 24,
+                color: "rgba(74, 55, 40, 0.6)",
+              }}
+            >
+              왕관은 준비됐고, 이제 사람만 오면 됩니다!
             </div>
           </div>
         </div>
