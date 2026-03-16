@@ -45,7 +45,7 @@ export function LocationSection() {
             <button
               onClick={() =>
                 window.open(
-                  `https://map.kakao.com/link/search/${encodeURIComponent("을지로 파티룸")}`,
+                  `https://map.kakao.com/link/search/${encodeURIComponent(invitationContent.location.venueName)}`,
                   "_blank",
                 )
               }
