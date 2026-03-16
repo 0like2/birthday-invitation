@@ -1,8 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import Image from "next/image";
 import { invitationContent } from "@/content/invitation";
+import type { GuestEntry } from "@/lib/guest-store";
+import { addGuest } from "@/lib/guest-store";
 
 function getStatusNote(option: string) {
   return (
@@ -20,27 +22,39 @@ const optionStyles = [
 
 export function RsvpSection() {
   const [name, setName] = useState("");
+  const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
 
   function handleSubmit() {
     if (!name.trim() || !selectedOption) return;
+
+    const entry: GuestEntry = {
+      id: Date.now().toString(),
+      name: name.trim(),
+      status: selectedOption,
+      message: message.trim() || undefined,
+      createdAt: new Date().toISOString(),
+    };
+
+    addGuest(entry);
     setSubmitted(true);
+
+    // 커스텀 이벤트로 방명록 갱신 알림
+    window.dispatchEvent(new Event("guest-updated"));
   }
 
   function handleShareViaKakao() {
-    const message = `[세 왕자님의 생일파티 RSVP]\n이름: ${name}\n응답: ${selectedOption}`;
-    const encodedMessage = encodeURIComponent(message);
+    const msg = `[세 왕자님의 생일파티 RSVP]\n이름: ${name}\n응답: ${selectedOption}${message ? `\n한마디: ${message}` : ""}`;
 
-    // 모바일에서 카카오톡 공유 or 클립보드 복사 fallback
     if (navigator.share) {
       void navigator.share({
         title: "세 왕자님의 생일파티 RSVP",
-        text: message,
+        text: msg,
       });
     } else {
-      void navigator.clipboard.writeText(message);
-      alert("응답이 클립보드에 복사되었어요!\n주최자에게 붙여넣기로 전달해주세요!");
+      void navigator.clipboard.writeText(msg);
+      alert("응답이 복사되었어요!\n주최자에게 전달해주세요!");
     }
   }
 
@@ -58,9 +72,11 @@ export function RsvpSection() {
               <p className="mt-1 text-lg font-bold text-[color:var(--accent-deep)]">
                 {selectedOption}
               </p>
-              <p className="mt-1 text-xs text-[color:var(--muted-foreground)]">
-                {getStatusNote(selectedOption!)}
-              </p>
+              {message && (
+                <p className="mt-2 text-sm text-[color:var(--foreground)]/70">
+                  &ldquo;{message}&rdquo;
+                </p>
+              )}
             </div>
 
             <button
@@ -75,6 +91,7 @@ export function RsvpSection() {
               onClick={() => {
                 setSubmitted(false);
                 setName("");
+                setMessage("");
                 setSelectedOption(null);
               }}
               type="button"
@@ -91,7 +108,6 @@ export function RsvpSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Floating sticker */}
         <div className="animate-wiggle pointer-events-none absolute -left-1 top-8 sm:left-6">
           <Image
             src="/stickers/party-horn.gif"
@@ -110,7 +126,7 @@ export function RsvpSection() {
             </h2>
           </div>
 
-          {/* Name input */}
+          {/* Name */}
           <div className="mt-5">
             <label
               htmlFor="rsvp-name"
@@ -151,6 +167,24 @@ export function RsvpSection() {
                 </button>
               );
             })}
+          </div>
+
+          {/* Message */}
+          <div className="mt-5">
+            <label
+              htmlFor="rsvp-message"
+              className="block text-center text-sm font-medium text-[color:var(--foreground)]/80"
+            >
+              왕자님들에게 한마디!
+            </label>
+            <textarea
+              id="rsvp-message"
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              placeholder="축하 메시지를 남겨주세요! (선택)"
+              rows={2}
+              className="mt-2 w-full resize-none rounded-2xl border-2 border-[color:var(--accent-soft)] bg-[color:var(--surface-strong)] px-4 py-3 text-sm text-[color:var(--foreground)] placeholder:text-[color:var(--muted-foreground)] outline-none transition-colors focus:border-[color:var(--accent)] focus:bg-white"
+            />
           </div>
 
           {/* Submit */}
