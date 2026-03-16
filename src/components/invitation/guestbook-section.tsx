@@ -5,85 +5,22 @@ import Image from "next/image";
 import type { GuestEntry } from "@/lib/guest-store";
 import { getGuests } from "@/lib/guest-store";
 
-const boxColors = [
-  { bg: "bg-[color:var(--accent-soft)]", ribbon: "bg-[color:var(--accent)]" },
-  { bg: "bg-[color:var(--lavender)]", ribbon: "bg-[color:var(--lavender-deep)]" },
-  { bg: "bg-[color:var(--mint)]", ribbon: "bg-[color:var(--mint-deep)]" },
-  { bg: "bg-[color:var(--cream)]", ribbon: "bg-[color:var(--peach)]" },
-];
-
 const statusEmojis: Record<string, string> = {
   "갈게요!": "🎉",
   "고민 중이에요": "🤔",
   "늦게 갈 수도!": "🏃",
 };
 
-function GiftBox({ guest, index }: { guest: GuestEntry; index: number }) {
-  const [isOpen, setIsOpen] = useState(false);
-  const color = boxColors[index % boxColors.length];
-
-  return (
-    <button
-      type="button"
-      onClick={() => setIsOpen(!isOpen)}
-      className="w-full text-left transition-all duration-500"
-    >
-      {isOpen ? (
-        /* Opened state - message revealed */
-        <div className="animate-fade-up rounded-2xl border-2 border-[color:var(--accent-soft)] bg-white p-4 shadow-md">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-2">
-              <span className="text-lg">
-                {statusEmojis[guest.status] ?? "🎁"}
-              </span>
-              <span className="font-bold text-[color:var(--foreground)]">
-                {guest.name}
-              </span>
-            </div>
-            <span className="rounded-full bg-[color:var(--surface-strong)] px-2.5 py-1 text-xs font-medium text-[color:var(--accent-deep)]">
-              {guest.status}
-            </span>
-          </div>
-          {guest.message && (
-            <p className="mt-3 rounded-xl bg-[color:var(--surface-strong)] p-3 text-sm leading-relaxed text-[color:var(--foreground)]/80">
-              &ldquo;{guest.message}&rdquo;
-            </p>
-          )}
-          <p className="mt-2 text-center text-xs text-[color:var(--muted-foreground)]">
-            탭하면 다시 닫혀요
-          </p>
-        </div>
-      ) : (
-        /* Closed gift box */
-        <div
-          className={`group relative flex flex-col items-center rounded-2xl ${color.bg} p-4 shadow-md transition-transform duration-300 hover:-translate-y-1 hover:shadow-lg`}
-        >
-          {/* Ribbon vertical */}
-          <div
-            className={`absolute inset-x-0 mx-auto h-full w-4 ${color.ribbon} opacity-30 rounded-2xl`}
-          />
-          {/* Ribbon horizontal */}
-          <div
-            className={`absolute inset-y-0 my-auto h-4 w-full ${color.ribbon} opacity-30 rounded-2xl`}
-          />
-          {/* Bow */}
-          <div className="relative z-10 text-3xl transition-transform duration-300 group-hover:scale-125">
-            🎁
-          </div>
-          <span className="relative z-10 mt-2 rounded-full bg-white/80 px-3 py-1 text-sm font-bold text-[color:var(--foreground)] shadow-sm">
-            {guest.name}
-          </span>
-          <span className="relative z-10 mt-1 text-xs text-[color:var(--foreground)]/60">
-            탭해서 열어보세요!
-          </span>
-        </div>
-      )}
-    </button>
-  );
-}
+const cardColors = [
+  "bg-[color:var(--surface-strong)]",
+  "bg-[color:var(--lavender)]/30",
+  "bg-[color:var(--mint)]/30",
+  "bg-[color:var(--cream)]",
+];
 
 export function GuestbookSection() {
   const [guests, setGuests] = useState<GuestEntry[]>([]);
+  const [isOpen, setIsOpen] = useState(false);
 
   useEffect(() => {
     setGuests(getGuests());
@@ -111,40 +48,104 @@ export function GuestbookSection() {
         </div>
 
         <div className="text-center">
-          <div className="text-3xl">🎁</div>
-          <h2 className="mt-2 font-serif-display text-2xl text-[color:var(--foreground)]">
+          <h2 className="font-serif-display text-2xl text-[color:var(--foreground)]">
             선물상자 방명록
           </h2>
-          <p className="mt-2 text-sm text-[color:var(--muted-foreground)]">
-            참석자들의 축하 메시지를 열어보세요!
+          <p className="mt-1 text-sm text-[color:var(--muted-foreground)]">
+            누가 오는지 궁금하다면?
           </p>
         </div>
 
         {guests.length > 0 ? (
-          <>
-            {/* Attending count */}
-            <div className="mt-5 flex justify-center gap-3">
-              <div className="rounded-full bg-[color:var(--surface-strong)] px-4 py-2 text-sm">
-                <span className="font-bold text-[color:var(--accent-deep)]">
-                  {guests.length}
-                </span>
-                <span className="ml-1 text-[color:var(--muted-foreground)]">
-                  명이 응답했어요
-                </span>
-              </div>
-            </div>
+          <div className="mt-5">
+            {!isOpen ? (
+              /* Big gift box - closed */
+              <button
+                type="button"
+                onClick={() => setIsOpen(true)}
+                className="group mx-auto flex w-full flex-col items-center"
+              >
+                <div className="relative w-full overflow-hidden rounded-3xl border-2 border-[color:var(--accent-soft)] bg-gradient-to-b from-[color:var(--accent-soft)] to-[color:var(--surface-strong)] p-8 shadow-lg transition-all duration-500 group-hover:-translate-y-2 group-hover:shadow-xl">
+                  {/* Ribbon cross */}
+                  <div className="absolute inset-x-0 mx-auto h-full w-6 bg-[color:var(--accent)] opacity-20" />
+                  <div className="absolute inset-y-0 my-auto h-6 w-full bg-[color:var(--accent)] opacity-20" />
 
-            {/* Gift boxes grid */}
-            <div className="mt-5 grid grid-cols-2 gap-3">
-              {guests.map((guest, index) => (
-                <GiftBox key={guest.id} guest={guest} index={index} />
-              ))}
-            </div>
-          </>
+                  {/* Bow */}
+                  <div className="animate-wiggle relative z-10 text-6xl">
+                    🎁
+                  </div>
+
+                  <p className="relative z-10 mt-4 text-lg font-bold text-[color:var(--accent-deep)]">
+                    선물상자를 열어보세요!
+                  </p>
+                  <p className="relative z-10 mt-1 text-sm text-[color:var(--foreground)]/60">
+                    {guests.length}명의 축하 메시지가 기다리고 있어요
+                  </p>
+
+                  {/* Bounce hint */}
+                  <div className="relative z-10 mt-4 animate-bounce text-2xl">
+                    👆
+                  </div>
+                </div>
+              </button>
+            ) : (
+              /* Opened - guest list revealed */
+              <div className="animate-fade-up">
+                {/* Open header */}
+                <div className="rounded-t-3xl border-2 border-b-0 border-[color:var(--accent-soft)] bg-gradient-to-b from-[color:var(--accent-soft)] to-white px-5 py-4 text-center">
+                  <div className="text-3xl">🎉</div>
+                  <p className="mt-1 text-sm font-bold text-[color:var(--accent-deep)]">
+                    {guests.length}명이 함께해요!
+                  </p>
+                </div>
+
+                {/* Guest list */}
+                <div className="space-y-0 rounded-b-3xl border-2 border-t-0 border-[color:var(--accent-soft)] bg-white">
+                  {guests.map((guest, index) => (
+                    <div
+                      key={guest.id}
+                      className={`animate-fade-up border-b border-[color:var(--line-soft)] px-5 py-4 last:border-b-0 ${cardColors[index % cardColors.length]}`}
+                      style={{ animationDelay: `${index * 0.1}s` }}
+                    >
+                      <div className="flex items-center justify-between">
+                        <div className="flex items-center gap-2.5">
+                          <span className="flex h-9 w-9 items-center justify-center rounded-full bg-white text-lg shadow-sm">
+                            {statusEmojis[guest.status] ?? "🎁"}
+                          </span>
+                          <div>
+                            <span className="font-bold text-[color:var(--foreground)]">
+                              {guest.name}
+                            </span>
+                            <span className="ml-2 rounded-full bg-white px-2 py-0.5 text-xs font-medium text-[color:var(--accent-deep)] shadow-sm">
+                              {guest.status}
+                            </span>
+                          </div>
+                        </div>
+                      </div>
+                      {guest.message && (
+                        <p className="mt-2 ml-11 rounded-xl bg-white/80 px-3 py-2 text-sm leading-relaxed text-[color:var(--foreground)]/75 shadow-sm">
+                          &ldquo;{guest.message}&rdquo;
+                        </p>
+                      )}
+                    </div>
+                  ))}
+                </div>
+
+                {/* Close button */}
+                <button
+                  type="button"
+                  onClick={() => setIsOpen(false)}
+                  className="mt-3 w-full text-center text-sm text-[color:var(--muted-foreground)] underline"
+                >
+                  선물상자 다시 닫기
+                </button>
+              </div>
+            )}
+          </div>
         ) : (
-          <div className="mt-6 rounded-2xl border-2 border-dashed border-[color:var(--accent-soft)] bg-white p-8 text-center">
+          <div className="mt-6 rounded-3xl border-2 border-dashed border-[color:var(--accent-soft)] bg-white p-8 text-center">
             <div className="text-4xl">📭</div>
-            <p className="mt-3 text-sm text-[color:var(--muted-foreground)]">
+            <p className="mt-3 text-sm leading-relaxed text-[color:var(--muted-foreground)]">
               아직 도착한 선물상자가 없어요!
               <br />
               위에서 참석 여부를 알려주시면
