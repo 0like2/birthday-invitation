@@ -3,8 +3,12 @@ import { invitationContent } from "@/content/invitation";
 
 const emojiMap: Record<string, string> = {
   door: "🚪",
+  crown: "👑",
   drink: "🥂",
   cake: "🎂",
+  gift: "🎁",
+  game: "🎲",
+  book: "📖",
   camera: "📸",
   music: "🎵",
 };
@@ -15,6 +19,10 @@ const dotColors = [
   "bg-[color:var(--mint-deep)]",
   "bg-[color:var(--lavender-deep)]",
   "bg-[color:var(--peach)]",
+  "bg-[color:var(--accent)]",
+  "bg-[color:var(--mint-deep)]",
+  "bg-[color:var(--lavender-deep)]",
+  "bg-[color:var(--accent-soft)]",
 ];
 
 export function TimetableSection() {
