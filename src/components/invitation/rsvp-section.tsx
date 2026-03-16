@@ -114,8 +114,8 @@ export function RsvpSection() {
           <Image
             src="/stickers/hyeongbin-magic.png"
             alt=""
-            width={85}
-            height={85}
+            width={350}
+            height={350}
             quality={85}
           />
         </div>
@@ -125,8 +125,8 @@ export function RsvpSection() {
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={65}
-            height={65}
+            width={200}
+            height={200}
             unoptimized
           />
         </div>
@@ -136,8 +136,8 @@ export function RsvpSection() {
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={65}
-            height={65}
+            width={200}
+            height={200}
             unoptimized
           />
         </div>

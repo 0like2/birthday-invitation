@@ -13,8 +13,8 @@ export function HeroSection() {
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={75}
-            height={75}
+            width={200}
+            height={200}
             unoptimized
           />
         </div>
@@ -24,8 +24,8 @@ export function HeroSection() {
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={70}
-            height={70}
+            width={200}
+            height={200}
             unoptimized
           />
         </div>
@@ -35,8 +35,8 @@ export function HeroSection() {
           <Image
             src="/stickers/sanguk-4.png"
             alt=""
-            width={85}
-            height={85}
+            width={350}
+            height={350}
             quality={85}
           />
         </div>
@@ -47,8 +47,8 @@ export function HeroSection() {
             <Image
               src="/stickers/hyeongbin-4.png"
               alt=""
-              width={85}
-              height={85}
+              width={350}
+              height={350}
               quality={85}
             />
           </div>
