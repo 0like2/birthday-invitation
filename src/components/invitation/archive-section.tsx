@@ -12,14 +12,15 @@ export function ArchiveSection() {
   return (
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
-        {/* Floating sticker */}
+        {/* Floating prince sticker */}
         <div className="animate-float-reverse pointer-events-none absolute -right-1 top-2 sm:right-6">
           <Image
-            src="/stickers/cute-cat.gif"
+            src="/stickers/prince-stickers-c.png"
             alt=""
-            width={50}
-            height={50}
-            unoptimized
+            width={70}
+            height={70}
+            className="object-contain object-[50%_50%]"
+            quality={85}
           />
         </div>
 

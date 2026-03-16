@@ -40,15 +40,16 @@ export function HeroSection() {
           {invitationContent.event.eyebrow}
         </p>
 
-        {/* Main Illustration */}
+        {/* Main Illustration - Party Banner */}
         <div className="mx-auto mt-6 overflow-hidden rounded-3xl border-4 border-[color:var(--accent-soft)] shadow-xl shadow-[rgba(255,107,138,0.15)]">
           <Image
-            src="/stickers/three-princes.png"
-            alt="세 왕자님의 생일파티 - 이상욱, 고형빈, 이영락"
+            src="/stickers/party-banner.png"
+            alt="세 왕자님의 생일파티에 초대합니다"
             width={600}
             height={600}
             className="w-full"
             priority
+            quality={90}
           />
         </div>
 

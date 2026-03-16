@@ -111,11 +111,12 @@ export function RsvpSection() {
       <div className="mx-auto max-w-md">
         <div className="animate-wiggle pointer-events-none absolute -left-1 top-8 sm:left-6">
           <Image
-            src="/stickers/party-horn.gif"
+            src="/stickers/prince-stickers-c.png"
             alt=""
-            width={50}
-            height={50}
-            unoptimized
+            width={65}
+            height={65}
+            className="object-contain object-[50%_0%]"
+            quality={85}
           />
         </div>
 

@@ -11,19 +11,20 @@ export function FooterSection() {
         {/* Floating stickers */}
         <div className="animate-float pointer-events-none absolute left-4 top-0 sm:left-12">
           <Image
-            src="/stickers/party-horn.gif"
+            src="/stickers/prince-stickers-a.png"
             alt=""
-            width={50}
-            height={50}
-            unoptimized
+            width={65}
+            height={65}
+            className="object-contain object-[33%_0%]"
+            quality={85}
           />
         </div>
         <div className="animate-float-reverse pointer-events-none absolute right-4 top-4 sm:right-12">
           <Image
-            src="/stickers/cute-cat.gif"
+            src="/stickers/party-horn.gif"
             alt=""
-            width={50}
-            height={50}
+            width={55}
+            height={55}
             unoptimized
           />
         </div>
