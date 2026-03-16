@@ -5,21 +5,21 @@ import Image from "next/image";
 const princes = [
   {
     name: "고형빈",
-    image: "/stickers/prince-hyeongbin.png",
+    image: "/profiles/hyeongbin.png",
     color: "from-pink-100 to-rose-50",
     borderColor: "border-pink-200",
     delay: "0s",
   },
   {
     name: "이상욱",
-    image: "/stickers/prince-sanguk.png",
+    image: "/profiles/sanguk.png",
     color: "from-violet-100 to-purple-50",
     borderColor: "border-violet-200",
     delay: "0.3s",
   },
   {
     name: "이영락",
-    image: "/stickers/prince-yeongrak.png",
+    image: "/profiles/yeongrak.png",
     color: "from-amber-100 to-yellow-50",
     borderColor: "border-amber-200",
     delay: "0.6s",
@@ -52,8 +52,9 @@ export function PrincesSection() {
                     src={prince.image}
                     alt={prince.name}
                     fill
-                    className="object-cover object-top scale-150 translate-y-4"
-                    sizes="(max-width: 640px) 96px, 112px"
+                    className="object-cover object-center"
+                    sizes="(max-width: 640px) 112px, 128px"
+                    quality={90}
                   />
                 </div>
               </div>
