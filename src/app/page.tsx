@@ -3,15 +3,16 @@ import { EventInfoSection } from "@/components/invitation/event-info-section";
 import { FooterSection } from "@/components/invitation/footer-section";
 import { HeroSection } from "@/components/invitation/hero-section";
 import { InvitationSection } from "@/components/invitation/invitation-section";
+import { PrincesSection } from "@/components/invitation/princes-section";
 import { LocationSection } from "@/components/invitation/location-section";
 import { RsvpSection } from "@/components/invitation/rsvp-section";
-import { SectionPreview } from "@/components/invitation/section-preview";
 import { TimetableSection } from "@/components/invitation/timetable-section";
 
 export default function Home() {
   return (
     <main className="min-h-screen bg-[color:var(--background)] text-[color:var(--foreground)]">
       <HeroSection />
+      <PrincesSection />
       <InvitationSection />
       <EventInfoSection />
       <LocationSection />
@@ -20,7 +21,6 @@ export default function Home() {
       <div id="rsvp">
         <RsvpSection />
       </div>
-      <SectionPreview />
       <FooterSection />
     </main>
   );

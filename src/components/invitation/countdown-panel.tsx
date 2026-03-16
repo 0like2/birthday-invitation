@@ -62,47 +62,34 @@ export function CountdownPanel({ targetIso, label }: CountdownPanelProps) {
 
   const items = useMemo(
     () => [
-      { value: countdown.days, label: "days" },
-      { value: countdown.hours, label: "hours" },
-      { value: countdown.minutes, label: "mins" },
-      { value: countdown.seconds, label: "secs" },
+      { value: countdown.days, label: "일" },
+      { value: countdown.hours, label: "시간" },
+      { value: countdown.minutes, label: "분" },
+      { value: countdown.seconds, label: "초" },
     ],
     [countdown.days, countdown.hours, countdown.minutes, countdown.seconds],
   );
 
   return (
-    <section className="rounded-[32px] border border-[color:var(--line-soft)] bg-[linear-gradient(180deg,rgba(255,255,255,0.9),rgba(247,243,236,0.78))] p-5 shadow-[0_28px_60px_rgba(17,24,39,0.12)] backdrop-blur-sm">
-      <div className="flex items-start justify-between gap-4">
-        <div>
-          <p className="text-[0.68rem] uppercase tracking-[0.34em] text-[color:var(--muted-foreground)]">
-            {label}
-          </p>
-          <p className="mt-2 max-w-[12rem] text-sm leading-6 text-[color:var(--foreground)]/80">
-            {countdown.isComplete
-              ? "세 왕자님의 밤이 시작되었어요. 이제 파티의 장면을 만나볼 시간입니다."
-              : "을지로의 밤이 열리기 전, 남은 시간을 함께 세어보세요."}
-          </p>
-        </div>
-        <div className="rounded-full border border-[color:var(--line-soft)] bg-[color:var(--surface)] px-3 py-1 text-[0.68rem] uppercase tracking-[0.22em] text-[color:var(--accent)]">
-          {countdown.isComplete ? "party on" : "counting down"}
-        </div>
-      </div>
-
-      <div className="mt-5 grid grid-cols-4 gap-2.5">
+    <div className="rounded-2xl border border-[color:var(--accent-soft)] bg-white p-4 shadow-sm">
+      <p className="text-center text-xs font-medium text-[color:var(--accent-deep)]">
+        {countdown.isComplete ? "파티가 시작됐어요!" : label}
+      </p>
+      <div className="mt-3 grid grid-cols-4 gap-2">
         {items.map((item) => (
           <div
             key={item.label}
-            className="rounded-[24px] border border-[color:var(--line-soft)] bg-[color:var(--surface-strong)] px-3 py-4 text-center"
+            className="rounded-xl bg-[color:var(--surface-strong)] px-2 py-3 text-center"
           >
-            <div className="font-serif-display text-2xl leading-none text-[color:var(--foreground)]">
+            <div className="font-serif-display text-2xl leading-none text-[color:var(--accent-deep)]">
               {item.value}
             </div>
-            <div className="mt-2 text-[0.62rem] uppercase tracking-[0.28em] text-[color:var(--muted-foreground)]">
+            <div className="mt-1.5 text-[0.65rem] font-medium text-[color:var(--muted-foreground)]">
               {item.label}
             </div>
           </div>
         ))}
       </div>
-    </section>
+    </div>
   );
 }

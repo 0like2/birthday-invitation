@@ -1,38 +1,75 @@
+import Image from "next/image";
 import { invitationContent } from "@/content/invitation";
-import { SectionShell } from "@/components/invitation/section-shell";
+
+const emojiMap: Record<string, string> = {
+  door: "🚪",
+  drink: "🥂",
+  cake: "🎂",
+  camera: "📸",
+  music: "🎵",
+};
+
+const dotColors = [
+  "bg-[color:var(--accent)]",
+  "bg-[color:var(--accent-soft)]",
+  "bg-[color:var(--mint-deep)]",
+  "bg-[color:var(--lavender-deep)]",
+  "bg-[color:var(--peach)]",
+];
 
 export function TimetableSection() {
   return (
-    <SectionShell
-      eyebrow="tonight's schedule"
-      title={invitationContent.timetable.sectionTitle}
-      description="입장부터 케이크와 단체 사진까지, 밤의 흐름이 자연스럽게 보이도록 정리합니다."
-    >
-      <div className="space-y-3">
-        {invitationContent.timetable.items.map((item, index) => (
-          <div
-            key={`${item.time}-${item.title}`}
-            className="grid grid-cols-[4.5rem_1fr] gap-3 rounded-[24px] border border-[color:var(--line-soft)] bg-[color:var(--surface)] px-4 py-4"
-          >
-            <div className="relative pr-3">
-              <p className="font-serif-display text-[1.45rem] leading-none text-[color:var(--foreground)]">
-                {item.time}
-              </p>
-              {index !== invitationContent.timetable.items.length - 1 ? (
-                <span className="absolute right-0 top-0 h-full w-px bg-[linear-gradient(180deg,rgba(214,179,106,0.7),rgba(17,24,39,0.05))]" />
-              ) : null}
-            </div>
-            <div className="flex items-center">
-              <p className="text-sm leading-6 text-[color:var(--foreground)]/76">
-                {item.title}
-              </p>
-            </div>
+    <section className="relative px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-md">
+        {/* Floating sticker */}
+        <div className="animate-float pointer-events-none absolute -left-2 top-6 sm:left-4">
+          <Image
+            src="/stickers/party-horn.gif"
+            alt=""
+            width={55}
+            height={55}
+            unoptimized
+          />
+        </div>
+
+        <h2 className="text-center font-serif-display text-2xl text-[color:var(--foreground)]">
+          {invitationContent.timetable.sectionTitle}
+        </h2>
+
+        <div className="mt-6 rounded-3xl border border-[color:var(--lavender)] bg-white p-5 shadow-lg shadow-[rgba(232,218,248,0.15)]">
+          <div className="space-y-0">
+            {invitationContent.timetable.items.map((item, index) => (
+              <div key={`${item.time}-${item.title}`} className="flex gap-4">
+                {/* Timeline line */}
+                <div className="flex flex-col items-center">
+                  <div
+                    className={`h-8 w-8 shrink-0 rounded-full ${dotColors[index]} flex items-center justify-center text-sm`}
+                  >
+                    {emojiMap[item.emoji] ?? "🎉"}
+                  </div>
+                  {index !== invitationContent.timetable.items.length - 1 && (
+                    <div className="w-0.5 flex-1 bg-[color:var(--lavender)]" />
+                  )}
+                </div>
+
+                {/* Content */}
+                <div className="pb-6">
+                  <p className="text-xs font-bold tracking-wider text-[color:var(--accent-deep)]">
+                    {item.time}
+                  </p>
+                  <p className="mt-1 text-sm font-medium text-[color:var(--foreground)]">
+                    {item.title}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        ))}
+        </div>
+
+        <p className="mt-4 text-center text-xs text-[color:var(--muted-foreground)]">
+          {invitationContent.timetable.note}
+        </p>
       </div>
-      <p className="mt-4 text-sm leading-6 text-[color:var(--muted-foreground)]">
-        {invitationContent.timetable.note}
-      </p>
-    </SectionShell>
+    </section>
   );
 }

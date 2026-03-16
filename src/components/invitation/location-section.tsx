@@ -2,7 +2,6 @@
 
 import { useState } from "react";
 import { invitationContent } from "@/content/invitation";
-import { SectionShell } from "@/components/invitation/section-shell";
 
 export function LocationSection() {
   const [copied, setCopied] = useState(false);
@@ -14,59 +13,57 @@ export function LocationSection() {
   }
 
   return (
-    <SectionShell
-      eyebrow="where to find the princes"
-      title={invitationContent.location.sectionTitle}
-      description="카카오톡에서 바로 열어도 길을 잃지 않도록 주소와 이동 동선을 간결하게 안내합니다."
-    >
-      <div className="overflow-hidden rounded-[28px] border border-[color:var(--line-soft)] bg-[linear-gradient(180deg,rgba(17,24,39,0.95),rgba(31,41,55,0.92))] text-[color:var(--surface)]">
-        <div className="border-b border-[color:var(--line-strong)] p-5">
-          <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[color:var(--accent-soft)]">
-            venue
-          </p>
-          <h3 className="mt-3 font-serif-display text-[2rem] text-[color:var(--surface)]">
-            {invitationContent.location.venueName}
-          </h3>
-          <p className="mt-3 text-sm leading-6 text-[color:var(--surface)]/78">
-            {invitationContent.location.address}
-          </p>
-          <p className="mt-2 text-sm leading-6 text-[color:var(--surface)]/60">
-            {invitationContent.location.addressNote}
-          </p>
-        </div>
+    <section className="px-4 py-8 sm:px-6">
+      <div className="mx-auto max-w-md">
+        <div className="rounded-3xl border border-[color:var(--mint)] bg-white p-6 shadow-lg shadow-[rgba(184,232,208,0.15)]">
+          <div className="text-center">
+            <div className="text-3xl">🗺️</div>
+            <h2 className="mt-3 font-serif-display text-2xl text-[color:var(--foreground)]">
+              {invitationContent.location.sectionTitle}
+            </h2>
+          </div>
 
-        <div className="space-y-5 p-5">
-          <div className="rounded-[24px] border border-[color:var(--line-strong)] bg-white/6 p-4">
-            <p className="text-[0.68rem] uppercase tracking-[0.3em] text-[color:var(--accent-soft)]">
-              direction note
+          <div className="mt-5 rounded-2xl bg-[color:var(--mint)]/20 p-4 text-center">
+            <h3 className="font-serif-display text-xl text-[color:var(--foreground)]">
+              {invitationContent.location.venueName}
+            </h3>
+            <p className="mt-2 text-sm text-[color:var(--foreground)]/70">
+              {invitationContent.location.address}
             </p>
-            <p className="mt-3 text-sm leading-6 text-[color:var(--surface)]/76">
+            <p className="mt-1 text-xs text-[color:var(--muted-foreground)]">
+              {invitationContent.location.addressNote}
+            </p>
+          </div>
+
+          <div className="mt-4 rounded-2xl border border-dashed border-[color:var(--mint-deep)]/30 p-3">
+            <p className="whitespace-pre-line text-center text-sm leading-6 text-[color:var(--foreground)]/70">
               {invitationContent.location.directionNote}
             </p>
           </div>
 
-          <div className="grid gap-3 sm:grid-cols-2">
+          <div className="mt-5 grid gap-2">
             <button
-              onClick={() => window.open(`https://map.kakao.com/link/search/${encodeURIComponent("을지로 파티룸")}`, "_blank")}
+              onClick={() =>
+                window.open(
+                  `https://map.kakao.com/link/search/${encodeURIComponent("을지로 파티룸")}`,
+                  "_blank",
+                )
+              }
               type="button"
-              className="rounded-full bg-[color:var(--accent)] px-5 py-3 text-sm font-medium text-[color:var(--foreground-on-accent)] transition-transform duration-300 hover:-translate-y-0.5"
+              className="rounded-full bg-[color:var(--mint-deep)] px-5 py-3 text-sm font-bold text-white shadow-sm transition-transform duration-300 hover:-translate-y-0.5"
             >
               {invitationContent.location.ctaPrimary}
             </button>
             <button
               onClick={() => void handleCopyAddress()}
               type="button"
-              className="rounded-full border border-[color:var(--line-strong)] px-5 py-3 text-sm font-medium text-[color:var(--surface)] transition-colors duration-300 hover:bg-white/8"
+              className="rounded-full border-2 border-[color:var(--mint)] px-5 py-3 text-sm font-medium text-[color:var(--mint-deep)] transition-colors duration-300 hover:bg-[color:var(--mint)]/10"
             >
-              {copied ? "복사됐어요!" : invitationContent.location.ctaSecondary}
+              {copied ? "복사 완료!" : invitationContent.location.ctaSecondary}
             </button>
           </div>
-
-          <p className="text-sm leading-6 text-[color:var(--surface)]/56">
-            {invitationContent.location.fallback}
-          </p>
         </div>
       </div>
-    </SectionShell>
+    </section>
   );
 }
