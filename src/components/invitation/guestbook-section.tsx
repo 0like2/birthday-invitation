@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useCallback, useEffect, useState } from "react";
 import Image from "next/image";
 import type { GuestEntry } from "@/lib/guest-store";
 import { getGuests } from "@/lib/guest-store";
@@ -21,17 +21,24 @@ const cardColors = [
 export function GuestbookSection() {
   const [guests, setGuests] = useState<GuestEntry[]>([]);
   const [isOpen, setIsOpen] = useState(false);
+  const [loading, setLoading] = useState(true);
+
+  const fetchGuests = useCallback(async () => {
+    const data = await getGuests();
+    setGuests(data);
+    setLoading(false);
+  }, []);
 
   useEffect(() => {
-    setGuests(getGuests());
+    void fetchGuests();
 
     function handleUpdate() {
-      setGuests(getGuests());
+      void fetchGuests();
     }
 
     window.addEventListener("guest-updated", handleUpdate);
     return () => window.removeEventListener("guest-updated", handleUpdate);
-  }, []);
+  }, [fetchGuests]);
 
   return (
     <section className="relative px-4 py-8 sm:px-6">
@@ -56,7 +63,11 @@ export function GuestbookSection() {
           </p>
         </div>
 
-        {guests.length > 0 ? (
+        {loading ? (
+          <div className="mt-6 text-center text-sm text-[color:var(--muted-foreground)]">
+            불러오는 중...
+          </div>
+        ) : guests.length > 0 ? (
           <div className="mt-5">
             {!isOpen ? (
               /* Big gift box - closed */

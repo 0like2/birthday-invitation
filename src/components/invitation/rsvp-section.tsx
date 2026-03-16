@@ -1,9 +1,8 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import Image from "next/image";
 import { invitationContent } from "@/content/invitation";
-import type { GuestEntry } from "@/lib/guest-store";
 import { addGuest } from "@/lib/guest-store";
 
 function getStatusNote(option: string) {
@@ -25,23 +24,25 @@ export function RsvpSection() {
   const [message, setMessage] = useState("");
   const [selectedOption, setSelectedOption] = useState<string | null>(null);
   const [submitted, setSubmitted] = useState(false);
+  const [submitting, setSubmitting] = useState(false);
 
-  function handleSubmit() {
-    if (!name.trim() || !selectedOption) return;
+  async function handleSubmit() {
+    if (!name.trim() || !selectedOption || submitting) return;
 
-    const entry: GuestEntry = {
-      id: Date.now().toString(),
+    setSubmitting(true);
+    const result = await addGuest({
       name: name.trim(),
       status: selectedOption,
       message: message.trim() || undefined,
-      createdAt: new Date().toISOString(),
-    };
+    });
+    setSubmitting(false);
 
-    addGuest(entry);
-    setSubmitted(true);
-
-    // 커스텀 이벤트로 방명록 갱신 알림
-    window.dispatchEvent(new Event("guest-updated"));
+    if (result) {
+      setSubmitted(true);
+      window.dispatchEvent(new Event("guest-updated"));
+    } else {
+      alert("저장에 실패했어요. 다시 시도해주세요!");
+    }
   }
 
   function handleShareViaKakao() {
@@ -189,12 +190,12 @@ export function RsvpSection() {
 
           {/* Submit */}
           <button
-            onClick={handleSubmit}
-            disabled={!name.trim() || !selectedOption}
+            onClick={() => void handleSubmit()}
+            disabled={!name.trim() || !selectedOption || submitting}
             type="button"
             className="mt-5 w-full rounded-full bg-[color:var(--foreground)] px-5 py-3.5 text-sm font-bold text-white transition-all duration-300 hover:-translate-y-0.5 disabled:opacity-40 disabled:hover:translate-y-0"
           >
-            응답 완료!
+            {submitting ? "저장 중..." : "응답 완료!"}
           </button>
 
           <p className="mt-3 text-center text-xs text-[color:var(--muted-foreground)]">

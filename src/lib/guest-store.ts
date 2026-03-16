@@ -1,25 +1,40 @@
+import { supabase } from "@/lib/supabase";
+
 export type GuestEntry = {
   id: string;
   name: string;
   status: string;
   message?: string;
-  createdAt: string;
+  created_at: string;
 };
 
-const STORAGE_KEY = "birthday-party-guests";
+export async function getGuests(): Promise<GuestEntry[]> {
+  const { data, error } = await supabase
+    .from("guests")
+    .select("*")
+    .order("created_at", { ascending: true });
 
-export function getGuests(): GuestEntry[] {
-  if (typeof window === "undefined") return [];
-  try {
-    const data = localStorage.getItem(STORAGE_KEY);
-    return data ? (JSON.parse(data) as GuestEntry[]) : [];
-  } catch {
+  if (error) {
+    console.error("Failed to fetch guests:", error);
     return [];
   }
+
+  return data as GuestEntry[];
 }
 
-export function addGuest(entry: GuestEntry): void {
-  const guests = getGuests();
-  guests.push(entry);
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(guests));
+export async function addGuest(
+  entry: Omit<GuestEntry, "id" | "created_at">,
+): Promise<GuestEntry | null> {
+  const { data, error } = await supabase
+    .from("guests")
+    .insert({ name: entry.name, status: entry.status, message: entry.message })
+    .select()
+    .single();
+
+  if (error) {
+    console.error("Failed to add guest:", error);
+    return null;
+  }
+
+  return data as GuestEntry;
 }
