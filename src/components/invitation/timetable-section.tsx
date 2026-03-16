@@ -45,8 +45,8 @@ export function TimetableSection() {
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={200}
-            height={200}
+            width={80}
+            height={80}
             unoptimized
           />
         </div>
@@ -56,8 +56,8 @@ export function TimetableSection() {
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={200}
-            height={200}
+            width={80}
+            height={80}
             unoptimized
           />
         </div>

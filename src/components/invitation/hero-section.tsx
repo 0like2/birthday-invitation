@@ -13,8 +13,8 @@ export function HeroSection() {
           <Image
             src="/stickers/party-horn.gif"
             alt=""
-            width={200}
-            height={200}
+            width={80}
+            height={80}
             unoptimized
           />
         </div>
@@ -24,34 +24,10 @@ export function HeroSection() {
           <Image
             src="/stickers/cute-cat.gif"
             alt=""
-            width={200}
-            height={200}
+            width={75}
+            height={75}
             unoptimized
           />
-        </div>
-
-        {/* Bottom-left: 상욱 confused zigzagging */}
-        <div className="animate-zigzag pointer-events-none absolute bottom-36 -left-2 sm:left-0">
-          <Image
-            src="/stickers/sanguk-4.png"
-            alt=""
-            width={350}
-            height={350}
-            quality={85}
-          />
-        </div>
-
-        {/* Bottom-right: 형빈 riding horse orbiting */}
-        <div className="pointer-events-none absolute bottom-44 -right-2 sm:right-0">
-          <div className="animate-orbit">
-            <Image
-              src="/stickers/hyeongbin-4.png"
-              alt=""
-              width={350}
-              height={350}
-              quality={85}
-            />
-          </div>
         </div>
 
         {/* Donggrami Banner - full width */}
