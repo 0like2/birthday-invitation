@@ -6,12 +6,12 @@ export function InvitationSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-right: 영락 confused drifting */}
-        <div className="hidden sm:block animate-drift-left pointer-events-none absolute -right-3 top-0 sm:right-2">
+        <div className="animate-drift-left pointer-events-none absolute -right-3 top-0 sm:right-2">
           <Image
             src="/stickers/yeongrak-confused.png"
             alt=""
-            width={350}
-            height={350}
+            width={300}
+            height={300}
             quality={85}
           />
         </div>
@@ -28,12 +28,12 @@ export function InvitationSection() {
         </div>
 
         {/* Bottom-right: 형빈 shy floating */}
-        <div className="hidden sm:block animate-float pointer-events-none absolute bottom-10 -right-2 sm:right-0">
+        <div className="animate-float pointer-events-none absolute bottom-10 -right-2 sm:right-0">
           <Image
             src="/stickers/hyeongbin-shy.png"
             alt=""
-            width={350}
-            height={350}
+            width={300}
+            height={300}
             quality={85}
           />
         </div>

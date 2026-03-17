@@ -9,12 +9,12 @@ export function FooterSection() {
     <footer className="relative px-4 pb-12 pt-8 sm:px-6">
       <div className="mx-auto max-w-md text-center">
         {/* Top-left: 영락 gift spinning */}
-        <div className="hidden sm:block animate-spin-slow pointer-events-none absolute left-0 -top-2 sm:left-6">
+        <div className="animate-spin-slow pointer-events-none absolute left-0 -top-2 sm:left-6">
           <Image
             src="/stickers/yeongrak-gift.png"
             alt=""
-            width={350}
-            height={350}
+            width={300}
+            height={300}
             quality={85}
           />
         </div>
