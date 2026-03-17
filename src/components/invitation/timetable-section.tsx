@@ -11,6 +11,7 @@ const emojiMap: Record<string, string> = {
   book: "📖",
   camera: "📸",
   music: "🎵",
+  meat: "🥩",
 };
 
 const dotColors = [
