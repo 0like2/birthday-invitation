@@ -8,8 +8,8 @@ export function FooterSection() {
   return (
     <footer className="relative px-4 pb-12 pt-8 sm:px-6">
       <div className="mx-auto max-w-md text-center">
-        {/* Top-right: 영락 gift spinning */}
-        <div className="animate-spin-slow pointer-events-none absolute -right-6 -top-6 sm:-right-2 sm:-top-2">
+        {/* Top-left: 영락 gift spinning */}
+        <div className="animate-spin-slow pointer-events-none absolute -left-16 -top-8 sm:-left-8 sm:-top-4">
           <Image
             src="/stickers/yeongrak-gift.png"
             alt=""
