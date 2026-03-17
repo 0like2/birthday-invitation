@@ -15,7 +15,7 @@ export const invitationContent = {
       "3월 13일, 같은 날 태어난\n세 명의 왕자님이 있었으니…\n올해도 어김없이 생일이 돌아왔기에\n아래와 같이 소집을 명함.",
       "▸ 일시: 3월 20일(금) 20:00\n▸ 장소: 달빛정원 루프탑 5층\n▸ 준비물: 축하하는 마음 1개",
     ],
-    pullQuote: "불참 시 사유서 제출 바람.\n(거짓말 탐지기 가동 예정)",
+    pullQuote: "불참 시 사유서 제출 바람.",
   },
   eventInfo: {
     sectionTitle: "파티 정보",
@@ -28,8 +28,8 @@ export const invitationContent = {
       },
       {
         label: "시간",
-        value: "저녁 8시",
-        note: "8시 정각! 늦으면 케이크 없다!",
+        value: "저녁 8시 시작",
+        note: "6시부터 입장 가능!",
         icon: "clock",
       },
       {
