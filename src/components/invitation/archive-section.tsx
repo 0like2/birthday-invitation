@@ -13,7 +13,7 @@ export function ArchiveSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-right: 영락 walking zigzag */}
-        <div className="animate-zigzag pointer-events-none absolute -right-3 top-0 sm:right-0">
+        <div className="hidden sm:block animate-zigzag pointer-events-none absolute -right-3 top-0 sm:right-0">
           <Image
             src="/stickers/yeongrak-4.png"
             alt=""

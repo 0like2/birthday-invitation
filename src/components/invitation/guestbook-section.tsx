@@ -55,7 +55,7 @@ export function GuestbookSection() {
         </div>
 
         {/* Mid-left: 상욱 treasure twinkle */}
-        <div className="animate-twinkle pointer-events-none absolute -left-2 top-1/3 sm:left-0">
+        <div className="hidden sm:block animate-twinkle pointer-events-none absolute -left-2 top-1/3 sm:left-0">
           <Image
             src="/stickers/sanguk-treasure.png"
             alt=""

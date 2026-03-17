@@ -110,7 +110,7 @@ export function RsvpSection() {
     <section className="relative px-4 py-8 sm:px-6">
       <div className="mx-auto max-w-md">
         {/* Top-left: 형빈 magic sway */}
-        <div className="animate-sway pointer-events-none absolute -left-3 top-4 sm:left-0">
+        <div className="hidden sm:block animate-sway pointer-events-none absolute -left-3 top-4 sm:left-0">
           <Image
             src="/stickers/hyeongbin-magic.png"
             alt=""
