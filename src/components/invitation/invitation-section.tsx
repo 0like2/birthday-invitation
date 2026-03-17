@@ -16,28 +16,6 @@ export function InvitationSection() {
           />
         </div>
 
-        {/* Bottom-left: cat spinning slow */}
-        <div className="animate-spin-slow pointer-events-none absolute -left-2 bottom-6 sm:left-2">
-          <Image
-            src="/stickers/party-horn.gif"
-            alt=""
-            width={80}
-            height={80}
-            unoptimized
-          />
-        </div>
-
-        {/* Bottom-right: 형빈 shy floating */}
-        <div className="animate-float pointer-events-none absolute bottom-10 -right-2 sm:right-0">
-          <Image
-            src="/stickers/hyeongbin-shy.png"
-            alt=""
-            width={300}
-            height={300}
-            quality={85}
-          />
-        </div>
-
         <div className="rounded-3xl border border-[color:var(--accent-soft)] bg-white p-6 shadow-lg shadow-[rgba(255,107,138,0.08)]">
           <h2 className="text-center font-serif-display text-2xl text-[color:var(--accent-deep)]">
             {invitationContent.invitation.sectionTitle}
