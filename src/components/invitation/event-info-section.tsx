@@ -5,6 +5,7 @@ const iconMap: Record<string, string> = {
   clock: "⏰",
   location: "📍",
   people: "👥",
+  money: "💰",
 };
 
 const cardColors = [
